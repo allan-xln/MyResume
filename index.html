@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resume</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="./styles/header/header.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="hamburguer menu-btn">
+                    <span class="hamburguer container__image"><i class="fa-solid fa-bars"></i></span>
+                </div>
+                <ul class="navbar__list">
+                    <li id="nav-scroll" name="about" class="navbar__item"><a class="navbar__link">Sobre</a></li>
+                    <li id="nav-scroll" name="skills" class="navbar__item nav-skills"><a class="navbar__link">Qualificações</a></li>
+                    <li id="nav-scroll" name="experience" class="navbar__item nav-exp"><a class="navbar__link">Experiência</a></li>
+                </ul>  
+
+                <label for="theme" class="theme">
+                    <span class="theme__toggle-wrap">
+                        <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
+                        <span class="theme__fill"></span>
+                        <span class="theme__icon">
+                            <span class="theme__icon-part"></span>
+                        </span>
+                    </span>
+                </label>     
+            </nav>
+
+            <div class="sidebar">
+                <div class="close-btn-wrapper">
+                    <i class="fas fa-times close-btn"></i>
+                </div>
+                <nav class="sidebar-menu">
+                    <nav id="nav-scroll" name="about" class="item scroll-item"><a>Sobre</a></nav>
+                    <nav id="nav-scroll" name="skills" class="item scroll-item"><a>Qualificações</a></nav>
+                    <nav id="nav-scroll" name="experience" class="item scroll-item"><a>Experiência</a></nav>
+                </nav>
+            </div>
+        </header>
+
+        <section class="profile__section">
+            <div class="profile-image__container">
+                <!-- <img class="profile-image" src="./assets/profile-image.jpg" alt="Profile Picture"> -->
+            </div>
+            <div class="profile-info">
+                <h1 class="profile__name">Allan da Silva Pereira, 20 anos</h1>
+                <hr>
+                <h2 class="profile__job-title">Assistente de TI</h2>
+                <h2 class="profile__location">São José dos Pinhais, PR</h2>
+                <span class="social-icons">
+                    <i class="fa-solid fa-envelope"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-github"></i>
+                    <i class="fa-solid fa-phone"></i>
+                </span>
+                
+            </div>
+        </section>
+
+        <aside class="additional-info">
+            <section id="contact" class="contact-info">
+                <h3 class="contact-info__title aside__title">Contato</h3>
+                <ul class="contact-info__list">
+                    <li class="contact-info__item list__link"><a href="mailto:allansilvapereirae@gmail.com" target="_blank"
+                        class="contact-info__email contact-info__link list__link">
+                        <i class="fa-solid fa-envelope"></i> allansilvapereirae@gmail.com</a>
+                    </li>
+                    <li class="contact-info__item list__link"><a href="https://www.linkedin.com/in/allan-da-silva-pereira-171265204/" target="_blank"
+                        class="contact-info__linkedin contact-info__link list__link">
+                        <i class="fa-brands fa-linkedin"></i> https://www.linkedin.com/in/allan-da-silva-pereira-171265204/</a>
+                    </li>
+                    <li class="contact-info__item list__link"><a href="https://github.com/allan-xln" target="_blank"
+                        class="contact-info__github contact-info__link list__link">
+                        <i class="fa-brands fa-github"></i> https://github.com/allan-xln</a>
+                    </li>
+                    <li class="contact-info__item list__link"><a href="#" class="contact-info__tel contact-info__link">
+                        <i class="fa-solid fa-phone"></i>(41) 98447-6869</a>
+                    </li>
+                </ul>
+            </section>
+            <section class="certifications">
+                <h3 class="certifications__title aside__title">Certificações</h3>
+                <ul class="certifications__list list__sub-text">
+                    <li class="certifications__item list__link">Técnico em desenvolvimento de sistemas</li>
+                    <li class="certifications__item list__link">Design Gráfico</li>
+                    <li class="certifications__item list__link">Inglês Básico e Intermediário</li>
+                </ul>
+            </section>
+            <section class="language-info">
+                <h3 class="language-info__title aside__title">Idiomas</h3>
+                <ul class="language-info__list list__sub-text">
+                    <li class="language-info__item"><p class="language-info__text language-info__link list__link">Inglês Intermediário e em desenvolvimento</p></li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="content">
+            <div id="about" class="introduction">
+                <h2 class="introduction__title main-title">Introdução</h2>
+                <hr>
+                class="introduction__text sub-text">
+                    Estou cursando o 5° período de Engenharia de Software no UniSenai PR, onde desenvolvi habilidades em relacionamento em equipe, construção de ideias e soluções, visão estratégica, comunicação escrita e apresentações.</p> 
+                    <br>
+                    Tenho um forte interesse em desenvolvimento de software, com foco em automação e desenvolvimento web, e estou sempre buscando novas tecnologias e automação de processos. </p>
+                    <br>
+                    Além disso, meu interesse se estende à gestão de negócios, integrando conhecimentos técnicos com práticas empresariais para contribuir positivamente para o progresso da empresa. 
+                    
+                    Estou determinado a avançar não só na minha carreira profissional, mas também no sucesso e prosperidade da organização.
+
+            </div>
+            <div id="skills" class="skills">
+                <h2 class="skills__title main-title">Habilidades</h2>
+                <hr>
+                <ul class="skills__list list__sub-text list__main-section">
+                    <li class="skills__item">HTML</li>
+                    <li class="skills__item">CSS</li>
+                    <li class="skills__item">Python</li>
+                    <li class="skills__item">JavaScript</li>
+                    <li class="skills__item">PHP</li>
+                    <li class="skills__item">Linux</li>
+                    <li class="skills__item">Windows Server</li>
+                    <li class="skills__item">Microsoft</li>
+                    <li class="skills__item">Suporte HelpDesk</li>
+                    <li class="skills__item">Infraestrutura de Rede</li>
+                    <li class="skills__item">Automação de processos</li>
+                    <li class="skills__item">Montagens e desmontagens de máquinas</li>
+                    <li class="skills__item">Controles Administrativos</li>
+                    <li class="skills__item">Manipulação gráfica</li>
+                </ul>
+            </div>
+            <section class="certifications aside-to-main">
+                <h3 class="certifications__title main-title">Certificações</h3>
+                <hr>
+                <ul class="certifications__list list__sub-text list__main-section">
+                    <li class="certifications__item list__link">Técnico em desenvolvimento de sistemas</li>
+                    <li class="certifications__item list__link">Programação Orientada a Objetos com JavaScript</li>
+                    <li class="certifications__item list__link">Informática Básica a Avançada</li>
+                    <li class="certifications__item list__link">Design Gráfico</li>
+                    <li class="certifications__item list__link">Inglês Básico e Intermediário</li>
+                </ul>
+            </section>
+            <section class="language-info aside-to-main">
+                <h3 class="language-info__title main-title">Idiomas</h3>
+                <hr>
+                <ul class="language-info__list list__sub-text list__main-section">
+                    <li class="language-info__item"><p class="language-info__text language-info__link list__link">Inglês Intermediário e em desenvolvimento</p></li>
+                </ul>
+            </section>
+            <div id="experience" class="experience">
+                <h2 class="experience__title main-title">Experiência</h2>
+                <hr>
+                <div class="experience__content sub-text">
+                    <ul class="experience__list list__sub-text">
+                        <li class="experience__item">
+                            <h3 class="experience__item-title">Cotrasa Veículos e Serviços (Scania) [Atual]</h3>
+                            <h3 class="experience__item__job-title">Assistente de TI</h3>
+                            <p class="experience__item-period">Desde Agosto de 2022</p>
+                            <p class="experience__item-description">
+                                Responsável pelo controle do ambiente de TI, manipulação e controle de componentes na rede, suporte a usuários, implantação e desenvolvimento de projetos, desenvolvimento de software e configuração de máquinas e usuários.
+                            </p>
+                        </li>
+                        <li class="experience__item">
+                            <h3 class="experience__item-title">Cotrasa Veículos e Serviços (Scania)</h3>
+                            <h3 class="experience__item__job-title">Auxiliar Administrativo de Serviços</h3>
+                            <p class="experience__item-period">Março de 2022 a Agosto de 2022</p>
+                            <p class="experience__item-description">
+                                Controle de ordens de serviço, prospecção de clientes e oportunidades e atendimento ao cliente.
+                            </p>
+                        </li>
+                        <li class="experience__item">
+                            <h3 class="experience__item-title">Cotrasa Veículos e Serviços (Scania)</h3>
+                            <h3 class="experience__item__job-title">Aprendiz – RH</h3>
+                            <p class="experience__item-period">Janeiro de 2021 a Março de 2022</p>
+                            <p class="experience__item-description">
+                                Controle e apoio corporativo a outras casas na área de recrutamento, seleção, treinamento e desenvolvimento.
+                            </p>
+                        </li>
+                        <li class="experience__item">
+                            <h3 class="experience__item-title">Designer e Editor</h3>
+                            <h3 class="experience__item__job-title">Freelance</h3>
+                            <p class="experience__item-period">2022</p>
+                            <p class="experience__item-description">
+                                Editor de vídeos para canais de jogos, designer na área de thumbnails ou logos, utilizando Photoshop, Premiere, Sony Vegas e After Effects.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="education" class="education">
+                <h2 class="education__title main-title">Educação</h2>
+                <hr>
+                <ul>
+                    <li class="education__item list__sub-text">
+                        <div class="education__item sub-text">
+                            <h3 class="education__item-title">Engenharia de Software</h3>
+                            <h3 class="education__item-sub-title">Bacharelado - UniSenai-PR</h3>
+                            <p class="education__item-period">Cursando atualmente – 5° Período</p>
+                        </div>
+                    </li>
+                    <li class="education__item list__sub-text">
+                        <div class="education__item sub-text">
+                            <h3 class="education__item-title">Técnico - Desenvolvimento de Sistemas</h3>
+                            <h3 class="education__item-sub-title">Senai</h3>
+                            <p class="education__item-period">2019 a 2021</p>
+                        </div>
+                    </li>
+                    <li class="education__item list__sub-text">
+                        <div class="education__item sub-text">
+                            <h3 class="education__item-title">Ensino Médio</h3>
+                            <h3 class="education__item-sub-title">Colégio Estadual Costa Viana</h3>
+                            <p class="education__item-period">2013 a 2021</p>
+                        </div>
+                    </li>
+                    <li class="education__item list__sub-text">
+                        <div class="education__item sub-text">
+                            <h3 class="education__item-title">Informática Básica a Avançada</h3>
+                            <h3 class="education__item-sub-title">Prepara</h3>
+                            <p class="education__item-period">2017 a 2018</p>
+                        </div>
+                    </li>
+                    <li class="education__item list__sub-text">
+                        <div class="education__item sub-text">
+                            <h3 class="education__item-title">Design Gráfico</h3>
+                            <h3 class="education__item-sub-title">Prepara</h3>
+                            <p class="education__item-period">2017 a 2018</p>
+                        </div>
+                    </li>
+                    <li class="education__item list__sub-text">
+                        <div class="education__item sub-text">
+                            <h3 class="education__item-title">Inglês Básico e Intermediário</h3>
+                            <h3 class="education__item-sub-title">Prepara</h3>
+                            <p class="education__item-period">2017 a 2018</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <p>Allan da Silva Pereira © 2024</p>
+            </div>
+        </footer>
+        <script type="module" src="./js/main.js"></script>
+    </body>
+</html>

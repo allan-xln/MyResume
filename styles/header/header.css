@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:wght@300;400;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('./navbar.css');
+@import url('./mode-switch.css');
+@import url('../content/main-section.css');
+@import url('../content/side-section.css');
+@import url('./sidebar.css');
+@import url('../footer/footer.css');
+
+:root[data-theme="light"] {
+    --background-color: #f0f0f3;
+    --text-color: black;
+    --secondary-text-color: rgb(79, 79, 79);
+}
+
+:root[data-theme="dark"] {
+    --background-color: #13131F;
+    --text-color: white;
+    --secondary-text-color: rgb(178, 177, 177);
+}
+
+:root {
+    --navbar-background: #0c0c13;
+    --navbar-text-color: white;
+    --accent-color: #890ac8;
+    --header-font: "Poppins", sans-serif;
+    --main-font: "Poppins", sans-serif;
+    --hue: 223;
+	--bg: hsl(var(--hue),10%,100%);
+	--fg: hsl(var(--hue),10%,0%);
+	--primary: hsl(var(--hue),90%,55%);
+	--primaryT: hsla(var(--hue),90%,55%,0);
+	--transDur: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    font-family: var(--main-font);
+    flex-wrap: wrap;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--main-font);
+    transition: 0.3s ease-in-out;
+}
+
+header {
+    width: 100%;
+    font-family: var(--header-font);
+}
+
+.header__container {
+    display: flex;
+    gap: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__section {
+    display: flex;
+    height: 400px;
+    width: 100%;
+    align-items: center;
+    gap: 10%;
+    background-color: rgb(39, 39, 58);
+    border-bottom: 5px solid var(--accent-color)
+}
+.profile-image__container {
+    display: flex;
+    height: 320px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+} 
+.profile-image {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    border: solid 4px white;
+}
+
+.profile-info {
+    color: white;
+    margin-top: 60px;
+    width: 45%;
+}
+
+/* CSS */
+.downloadBtn {
+    background: var(--accent-color);
+    border-radius: 999px;
+    box-shadow: var(--accent-color) 0 5px 15px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 40px 0 0 5px;
+    padding: 8px 18px;
+    width: 220px;
+    height: 50px;
+    border: 0;
+    transition: 0.1s ease-in-out;
+  }
+
+.downloadBtn:hover {
+    box-shadow: var(--accent-color) 1px 8px 25px -10px;
+}
+
+.profile__name {
+    font-size: 36px;
+}
+
+.profile__job-title,
+.profile__location {
+    font-size: 20px;
+    color: rgb(231, 231, 231)
+}
+
+.social-icons {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .profile-image__container {
+        margin-left: 6%;
+    } 
+}
+
+@media screen and (max-width: 880px) {
+
+    .profile__section {
+        gap: 5%;
+        height: 570px;
+    }
+
+    .profile-image__container {
+        height: 220px;
+        margin: 20px 0 0 0;
+    } 
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin: 0;
+        width: 50%;
+    }
+
+    .profile__name {
+        font-size: 28px;
+    }
+    
+    .profile__job-title,
+    .profile__location {
+        font-size: 20px;
+        color: rgb(231, 231, 231)
+    }
+
+    .profile__section {
+        flex-direction: column;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .downloadBtn {
+        margin: 8px 0 0 5px;
+    }
+
+    .social-icons {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding-left: 10px;
+        margin: 25px 0 25px 0;
+        gap: 30px;
+    }
+
+    .social-icons i {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .profile-info {
+        width: 80%;
+    }
+    
+    .navbar {
+        height: 80px;
+    }
+
+    .navbar__item {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .profile__name {
+        font-size: 22px;
+    }
+
+    .profile__job-title,
+    .profile__location {
+        font-size: 18px;
+    }
+}

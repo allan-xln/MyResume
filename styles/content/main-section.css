@@ -1,0 +1,81 @@
+.content {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 40px;
+    margin-left: 12%;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 4px solid var(--accent-color);
+    margin: 1em 0 .5em 0;
+    padding: 0;
+}
+
+.main-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.list__main-section {
+    font-size: 18px;
+    list-style: initial;
+}
+
+.sub-text {
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.experience__item__job-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--secondary-text-color);
+}
+
+.experience__item-period {
+    font-size: 16px;
+    color: var(--secondary-text-color);
+    margin-bottom: 8px;
+}
+
+.experience__item-description {
+    font-size: 17px;
+}
+
+.education__item-sub-title,
+.education__item-period  {
+    font-size: 17px;
+    color: var(--secondary-text-color);
+}
+
+.aside-to-main {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .content {
+        width: 52%;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding-top: 40px;
+        margin-left: 6%;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .content {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .aside-to-main {
+        display: block;
+    }
+
+}
