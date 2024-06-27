@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Curriculo Allan</title>
+        <script src="https://unpkg.com/i18next@21.6.14/dist/umd/i18next.min.js"></script>
+        <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.2/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+        <script src="https://unpkg.com/jquery-i18next@1.2.1/dist/umd/jquery-i18next.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="./styles/header/header.css">
     </head>
@@ -14,10 +17,10 @@
                     <span class="hamburguer container__image"><i class="fa-solid fa-bars"></i></span>
                 </div>
                 <ul class="navbar__list">
-                    <li id="nav-scroll" name="about" class="navbar__item"><a class="navbar__link">Sobre</a></li>
-                    <li id="nav-scroll" name="skills" class="navbar__item nav-skills"><a class="navbar__link">Qualificações</a></li>
-                    <li id="nav-scroll" name="experience" class="navbar__item nav-exp"><a class="navbar__link">Experiência</a></li>
-                </ul>  
+                    <li id="nav-scroll" name="about" class="navbar__item"><a class="navbar__link" data-i18n="about">Sobre</a></li>
+                    <li id="nav-scroll" name="skills" class="navbar__item nav-skills"><a class="navbar__link" data-i18n="skills">Qualificações</a></li>
+                    <li id="nav-scroll" name="experience" class="navbar__item nav-exp"><a class="navbar__link" data-i18n="experience">Experiência</a></li>
+                </ul>
 
                 <label for="theme" class="theme">
                     <span class="theme__toggle-wrap">
@@ -27,7 +30,7 @@
                             <span class="theme__icon-part"></span>
                         </span>
                     </span>
-                </label>     
+                </label>
             </nav>
 
             <div class="sidebar">
@@ -35,9 +38,9 @@
                     <i class="fas fa-times close-btn"></i>
                 </div>
                 <nav class="sidebar-menu">
-                    <nav id="nav-scroll" name="about" class="item scroll-item"><a>Sobre</a></nav>
-                    <nav id="nav-scroll" name="skills" class="item scroll-item"><a>Qualificações</a></nav>
-                    <nav id="nav-scroll" name="experience" class="item scroll-item"><a>Experiência</a></nav>
+                    <nav id="nav-scroll" name="about" class="item scroll-item" data-i18n="about" ><a>Sobre</a></nav>
+                    <nav id="nav-scroll" name="skills" class="item scroll-item" data-i18n="qualification"><a>Qualificações</a></nav>
+                    <nav id="nav-scroll" name="experience" class="item scroll-item" data-i18n="experience"><a>Experiência</a></nav>
                 </nav>
             </div>
         </header>
@@ -52,10 +55,18 @@
                 <h2 class="profile__job-title">Assistente de TI</h2>
                 <h2 class="profile__location">São José dos Pinhais, PR</h2>
                 <span class="social-icons">
-                    <i class="fa-solid fa-envelope"></i>
-                    <i class="fa-brands fa-linkedin"></i>
-                    <i class="fa-brands fa-github"></i>
-                    <i class="fa-solid fa-phone"></i>
+                    <a href="allansilvapereirae@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/allan-da-silva-pereira-171265204/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/allan-xln" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://wa.me/41984476869">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
                 </span>
                 
             </div>
@@ -92,8 +103,9 @@
             </section>
             <section class="language-info">
                 <h3 class="language-info__title aside__title">Idiomas</h3>
-                <ul class="language-info__list list__sub-text">
-                    <li class="language-info__item"><p class="language-info__text language-info__link list__link">Inglês Intermediário e em desenvolvimento</p></li>
+                <ul class="certifications__list list__sub-text">
+                    <li class="certifications__item list__link">Português Nativo</li>
+                    <li class="certifications__item list__link">Inglês Intermediário e em desenvolvimento</li>
                 </ul>
             </section>
         </aside>
@@ -153,8 +165,8 @@
                 <h2 class="experience__title main-title">Experiência</h2>
                 <hr>
                 <div class="experience__content sub-text">
-                    <ul class="experience__list list__sub-text">
-                        <li class="experience__item">
+                    <ul>
+                        <li>
                             <h3 class="experience__item-title">Cotrasa Veículos e Serviços (Scania) [Atual]</h3>
                             <h3 class="experience__item__job-title">Assistente de TI</h3>
                             <p class="experience__item-period">Desde Agosto de 2022</p>
@@ -162,7 +174,7 @@
                                 Responsável pelo controle do ambiente de TI, manipulação e controle de componentes na rede, suporte a usuários, implantação e desenvolvimento de projetos, desenvolvimento de software e configuração de máquinas e usuários.
                             </p>
                         </li>
-                        <li class="experience__item">
+                        <li>
                             <h3 class="experience__item-title">Cotrasa Veículos e Serviços (Scania)</h3>
                             <h3 class="experience__item__job-title">Auxiliar Administrativo de Serviços</h3>
                             <p class="experience__item-period">Março de 2022 a Agosto de 2022</p>
@@ -170,7 +182,7 @@
                                 Controle de ordens de serviço, prospecção de clientes e oportunidades e atendimento ao cliente.
                             </p>
                         </li>
-                        <li class="experience__item">
+                        <li>
                             <h3 class="experience__item-title">Cotrasa Veículos e Serviços (Scania)</h3>
                             <h3 class="experience__item__job-title">Aprendiz – RH</h3>
                             <p class="experience__item-period">Janeiro de 2021 a Março de 2022</p>
@@ -178,7 +190,7 @@
                                 Controle e apoio corporativo a outras casas na área de recrutamento, seleção, treinamento e desenvolvimento.
                             </p>
                         </li>
-                        <li class="experience__item">
+                        <li>
                             <h3 class="experience__item-title">Designer e Editor</h3>
                             <h3 class="experience__item__job-title">Freelance</h3>
                             <p class="experience__item-period">2022</p>
@@ -245,5 +257,6 @@
             </div>
         </footer>
         <script type="module" src="./js/main.js"></script>
+        <script type="module" src="./js/translation.js"></script>
     </body>
 </html>
