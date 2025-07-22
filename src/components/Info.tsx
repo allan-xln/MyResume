@@ -27,6 +27,7 @@ export function Info({
     englishLevel: isEnglish
       ? 'Intermediate (in progress)'
       : 'Intermediário (em desenvolvimento)',
+    downloadCV: isEnglish ? 'Download Resume (PDF)' : 'Baixar Currículo (PDF)',
   };
 
   return (
@@ -34,13 +35,12 @@ export function Info({
       {/* Botão hamburguer para mobile, só aparece quando sidebar fechado */}
       {!isOpen && (
         <button
-  onClick={() => setIsOpen(true)}
-  className="fixed top-4 left-4 z-50 md:hidden bg-zinc-800 p-2 rounded text-white shadow-md"
-  aria-label={isEnglish ? 'Open menu' : 'Abrir menu'}
->
-  <Menu size={24} />
-</button>
-
+          onClick={() => setIsOpen(true)}
+          className="fixed top-4 left-4 z-50 md:hidden bg-zinc-800 p-2 rounded text-white shadow-md"
+          aria-label={isEnglish ? 'Open menu' : 'Abrir menu'}
+        >
+          <Menu size={24} />
+        </button>
       )}
 
       {/* Overlay semi-transparente atrás do sidebar no mobile */}
@@ -118,6 +118,17 @@ export function Info({
             <Globe size={16} className="text-zinc-400" />
             <strong className="min-w-[60px]">{personalInfoLabels.english}:</strong>
             <span className="text-zinc-400">{personalInfoLabels.englishLevel}</span>
+          </li>
+
+          {/* Botão de download do currículo */}
+          <li>
+            <a
+              href="/curriculo.pdf"
+              download
+              className="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+            >
+              {personalInfoLabels.downloadCV}
+            </a>
           </li>
         </ul>
       </aside>
