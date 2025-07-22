@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Tema Claro */
+:root {
+  --color-primary: #111827;
+  --color-bg: #ffffff;
+  --color-text: #111827;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Tema Escuro */
+[data-theme="dark"] {
+  --color-primary: #22d3ee;
+  --color-bg: #111827;
+  --color-text: #f3f4f6;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Aplicação global */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
