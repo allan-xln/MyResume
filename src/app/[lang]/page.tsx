@@ -1,7 +1,6 @@
 import { use } from "react";
 
 import React from "react";
-import Link from "next/link";
 
 // Função que transforma **texto** em <strong>texto</strong>
 function parseMarkdown(text: string | React.ReactNode): React.ReactNode {

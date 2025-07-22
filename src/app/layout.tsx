@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body className="min-h-screen transition-colors duration-300 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100">
-        <ClientLayout lang={params.lang}>{children}</ClientLayout>
+        <ClientLayout>{children}</ClientLayout> {/* ✅ lang removido */}
       </body>
     </html>
   );
