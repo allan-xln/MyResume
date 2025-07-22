@@ -6,12 +6,6 @@ import { Info } from '@/components/Info';
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-interface Props {
-  params: {
-    lang: "pt" | "en";
-  };
-}
-
 // Função que transforma **texto** em <strong>texto</strong>
 function parseMarkdown(text: string | React.ReactNode): React.ReactNode {
   if (typeof text !== "string") return text;
@@ -25,8 +19,7 @@ function parseMarkdown(text: string | React.ReactNode): React.ReactNode {
   );
 }
 
-
-export default function Page({ params }: Props) {
+export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
   const { lang } = params;
 
   const isPT = lang === "pt";
@@ -35,7 +28,7 @@ export default function Page({ params }: Props) {
     title: "Allan da Silva Pereira",
     sectionTitle: isPT ? "Perfil Profissional" : "Professional Profile",
     paragraphs: isPT
-  ? [
+      ? [
       `Atuo há **4 anos na área de Tecnologia da Informação**, com experiência voltada para infraestrutura, automações, desenvolvimento web e implementação de soluções corporativas.`,
       `Sou movido por desafios e motivado a transformar problemas do dia a dia em soluções práticas e eficientes, sempre buscando otimizar processos e agregar valor às operações.`,
       `Na **Cotrasa - Scania**, onde estive de **2021 a 2024**, iniciei como jovem aprendiz e, posteriormente, fui promovido ao cargo de analista de TI. Durante esse período, participei da estruturação de processos, conduzi melhorias internas e colaborei diretamente com áreas estratégicas da empresa. Também fui responsável por apoiar a implantação do sistema **Senior**, conduzindo a parte técnica, testes de integração e capacitação dos usuários. Além disso, desenvolvi **projetos de automação** voltados à busca e consolidação de dados para alimentar dashboards, soluções que depois também apliquei em projetos posteriores.`,
