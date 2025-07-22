@@ -7,19 +7,16 @@ export const metadata: Metadata = {
   description: "Currículo online moderno",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { lang: "pt" | "en" };
 }) {
   return (
-    <html lang={params.lang}>
+    <html lang="pt">
       <body className="min-h-screen transition-colors duration-300 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
 }
-
