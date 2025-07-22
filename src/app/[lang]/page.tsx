@@ -1,8 +1,6 @@
 import { use } from "react";
 
 import React from "react";
-import { Header } from "@/components/Header";
-import { Info } from '@/components/Info';
 import Link from "next/link";
 
 // Função que transforma **texto** em <strong>texto</strong>
