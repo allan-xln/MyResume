@@ -1,9 +1,8 @@
-'use client';
+import { use } from "react";
 
 import React from "react";
 import { Header } from "@/components/Header";
 import { Info } from '@/components/Info';
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 // Função que transforma **texto** em <strong>texto</strong>
@@ -19,9 +18,8 @@ function parseMarkdown(text: string | React.ReactNode): React.ReactNode {
   );
 }
 
-export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
-  const { lang } = params;
-
+export default function Page({ params }: { params: Promise<{ lang: "pt" | "en" }> }) {
+  const { lang } = use(params);
   const isPT = lang === "pt";
 
   const content = {
@@ -117,133 +115,89 @@ export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
 
    
     <main className="flex-1 p-8 flex flex-col justify-center items-center text-left max-w-6xl w-full mx-auto">
-
-      <section id="perfil-profissional" className="space-y-6">
-    <motion.h1
+  <section id="perfil-profissional" className="space-y-6">
+    <h1
       key={lang}
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
       className="text-3xl md:text-4xl font-bold mb-6 text-center"
     >
       {content.title}
-    </motion.h1>
+    </h1>
 
-    <motion.h2
+
+    <h2
   key={`sectionTitle-${lang}`} // <-- forçando re-render
-  initial={{ opacity: 0, x: -20 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
   className="text-2xl font-semibold border-b pb-1 border-zinc-300 dark:border-zinc-700"
 >
   {content.sectionTitle}
-</motion.h2>
+</h2>
 
 {content.paragraphs.map((text, i) => (
-  <motion.p
+  <p
     key={`paragraph-${lang}-${i}`} // <-- chave única baseada no idioma
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{ duration: 0.5, delay: i * 0.1 }}
-    viewport={{ once: true }}
     className="text-lg leading-relaxed"
   >
     {parseMarkdown(text)}
-  </motion.p>
+  </p>
 ))}
   </section>
 
-      <motion.section
-        id="experiencias-teoricas"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="mt-16 w-full"
-      >
-        <h2 className="text-2xl font-semibold border-b pb-1 border-zinc-300 dark:border-zinc-700 mb-6">
-          {content.theoryTitle}
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-6 text-base">
-          {/* Idiomas */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow"
-          >
-            <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
-              {content.theory.languagesTitle}
-            </h3>
-            <ul className="list-disc list-inside text-zinc-600 dark:text-zinc-300 space-y-1">
-              {content.theory.languages.map((lang, idx) => (
-                <li key={idx}>{lang}</li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Informática */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow"
-          >
-            <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
-              {content.theory.informaticsTitle}
-            </h3>
-            <ul className="list-disc list-inside text-zinc-600 dark:text-zinc-300 space-y-1">
-              {content.theory.informatics.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Curso Técnico */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow"
-          >
-            <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
-              {content.theory.techCourseTitle}
-            </h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              {content.theory.techCourse}
-            </p>
-          </motion.div>
-
-          {/* Ensino Superior */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow"
-          >
-            <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
-              {content.theory.collegeTitle}
-            </h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              {content.theory.college}
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-  <motion.section
-  id="experiencias-profissionais"
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
-  className="mt-20 w-full"
+      <section
+  id="experiencias-teoricas"
+  className="mt-16 w-full"
 >
+  <h2 className="text-2xl font-semibold border-b pb-1 border-zinc-300 dark:border-zinc-700 mb-6">
+    {content.theoryTitle}
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-6 text-base">
+    {/* Idiomas */}
+    <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow">
+      <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
+        {content.theory.languagesTitle}
+      </h3>
+      <ul className="list-disc list-inside text-zinc-600 dark:text-zinc-300 space-y-1">
+        {content.theory.languages.map((lang, idx) => (
+          <li key={idx}>{lang}</li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Informática */}
+    <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow">
+      <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
+        {content.theory.informaticsTitle}
+      </h3>
+      <ul className="list-disc list-inside text-zinc-600 dark:text-zinc-300 space-y-1">
+        {content.theory.informatics.map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Curso Técnico */}
+    <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow">
+      <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
+        {content.theory.techCourseTitle}
+      </h3>
+      <p className="text-zinc-600 dark:text-zinc-300">
+        {content.theory.techCourse}
+      </p>
+    </div>
+
+    {/* Ensino Superior */}
+    <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-5 shadow">
+      <h3 className="font-semibold text-lg mb-2 text-zinc-800 dark:text-zinc-100">
+        {content.theory.collegeTitle}
+      </h3>
+      <p className="text-zinc-600 dark:text-zinc-300">
+        {content.theory.college}
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="experiencias-profissionais" className="mt-16 w-full">
   <h2 className="text-2xl font-semibold border-b pb-1 border-zinc-300 dark:border-zinc-700 mb-10">
     {isPT ? "Experiências Profissionais" : "Professional Experience"}
   </h2>
@@ -284,14 +238,7 @@ export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
           : "Currently leading the IT team with two apprentices under my supervision.",
       },
     ].map((item, idx) => (
-      <motion.div
-        key={idx}
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: idx * 0.1 }}
-        viewport={{ once: true }}
-        className="relative group"
-      >
+      <div key={idx} className="relative group">
         <div className="absolute -left-[1.06rem] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full 
           bg-zinc-400 border-2 border-zinc-400 
           shadow-md transition-all duration-300 group-hover:scale-110" />
@@ -307,21 +254,17 @@ export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
             <p className="text-zinc-700 dark:text-zinc-300">{item.destaque}</p>
           )}
         </div>
-      </motion.div>
+      </div>
     ))}
   </div>
-</motion.section>
+</section>
 
-<motion.h2
+<h2
   id="habilidades-tecnicas"
-  initial={{ opacity: 0, x: -20 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
   className="text-2xl font-semibold border-b pb-1 border-zinc-300 dark:border-zinc-700 mt-10"
 >
   {isPT ? "Habilidades Técnicas" : "Technical Skills"}
-</motion.h2>
+</h2>
 
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-base">
   {[
@@ -363,12 +306,8 @@ export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
       ],
     },
   ].map((section, idx) => (
-    <motion.div
+    <div
       key={idx}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: idx * 0.2 }}
-      viewport={{ once: true }}
       className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl shadow-md p-6"
     >
       <h3 className="font-semibold text-zinc-800 dark:text-zinc-100 mb-3">
@@ -379,17 +318,11 @@ export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
           <li key={i}>{item}</li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   ))}
 </div>
 
-<motion.p
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 0.5 }}
-  viewport={{ once: true }}
-  className="text-lg mt-8 leading-relaxed"
->
+<p className="text-lg mt-8 leading-relaxed">
   {isPT ? (
     <>
       Atualmente, busco <strong>novos desafios</strong> onde eu possa crescer,
@@ -403,10 +336,9 @@ export default function Page({ params }: { params: { lang: "pt" | "en" } }) {
       that foster learning, collaboration, and innovation.
     </>
   )}
-</motion.p>
+</p>
 
-          
-        </main>
-    </>
-  );
+</main>
+</>
+);
 }
