@@ -26,7 +26,6 @@ export function Info({
     contact: isEnglish ? 'Contact' : 'Contato',
     email: 'Email',
     github: 'GitHub',
-    onlineResume: isEnglish ? 'Online Resume' : 'Currículo online',
     english: 'English',
     englishLevel: isEnglish
       ? 'Intermediate (in progress)'
@@ -37,13 +36,25 @@ export function Info({
   return (
     <>
       {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="theme-surface fixed left-4 top-4 z-50 rounded-2xl border p-2.5 shadow-sm md:hidden"
-          aria-label={isEnglish ? 'Open menu' : 'Abrir menu'}
-        >
-          <Menu size={24} />
-        </button>
+        <>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="theme-surface fixed left-4 top-4 z-50 rounded-2xl border p-2.5 shadow-sm md:hidden"
+            aria-label={isEnglish ? 'Open menu' : 'Abrir menu'}
+          >
+            <Menu size={24} />
+          </button>
+
+          <a
+            href="/curriculo.pdf"
+            download
+            className="theme-surface-strong theme-surface-hover fixed right-4 bottom-4 z-50 inline-flex items-center gap-2 rounded-full border px-4 py-3 font-semibold shadow-sm transition md:hidden"
+            aria-label={personalInfoLabels.downloadCV}
+          >
+            <Download size={18} />
+            <span className="text-sm">{isEnglish ? 'PDF' : 'Baixar PDF'}</span>
+          </a>
+        </>
       )}
 
       {isOpen && (
@@ -59,14 +70,14 @@ export function Info({
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
         className={`
-          fixed top-0 left-0 z-50 flex h-screen w-80 flex-col p-4 text-sm transition-transform duration-300 ease-in-out md:sticky md:top-0 md:h-screen md:text-base
+          fixed inset-0 z-50 flex h-dvh w-dvw flex-col overflow-y-auto overscroll-contain p-0 text-sm transition-transform duration-300 ease-in-out [-webkit-overflow-scrolling:touch] md:sticky md:top-0 md:h-screen md:w-80 md:p-4 md:text-base
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           md:translate-x-0 md:transform-none
         `}
         role="complementary"
         aria-label={personalInfoLabels.title}
       >
-        <div className="theme-surface theme-spotlight flex h-full flex-col overflow-hidden rounded-[2rem] border px-6 py-6 shadow-sm">
+        <div className="theme-surface theme-spotlight flex min-h-dvh min-h-0 flex-col overflow-y-auto rounded-none border-0 px-6 py-6 shadow-none md:h-full md:min-h-0 md:rounded-[2rem] md:border md:shadow-sm">
           <div className="flex justify-end md:hidden">
             <button
               onClick={() => setIsOpen(false)}
@@ -83,7 +94,7 @@ export function Info({
             </p>
             <h2 className="mt-3 text-2xl font-black tracking-tight">{PERSONAL_INFO.shortName}</h2>
             <p className="theme-accent mt-1 text-xs font-semibold uppercase tracking-[0.22em]">
-              IT • Infra • Web
+              IT • Infra • Dev
             </p>
             <p className="theme-muted mt-3 text-sm leading-6">
               {isEnglish
@@ -92,7 +103,18 @@ export function Info({
             </p>
           </div>
 
-          <ul className="flex-1 space-y-3">
+          <div className="theme-surface mb-6 hidden rounded-[1.6rem] border p-3 md:block">
+            <a
+              href="/curriculo.pdf"
+              download
+              className="theme-surface-strong theme-surface-hover inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-4 py-3 font-semibold transition"
+            >
+              <Download size={18} />
+              {personalInfoLabels.downloadCV}
+            </a>
+          </div>
+
+          <ul className="flex-1 space-y-3 pb-1">
             <li className="theme-surface-soft rounded-2xl border p-4">
               <strong>{personalInfoLabels.age}:</strong> {ageLabel}
             </li>
@@ -136,20 +158,6 @@ export function Info({
             </li>
             <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
               <Globe size={18} className="theme-muted" />
-              <div className="min-w-0">
-                <strong className="block">{personalInfoLabels.onlineResume}</strong>
-                <a
-                  href="https://meetallan.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="theme-muted break-all transition hover:opacity-100"
-                >
-                  {PERSONAL_INFO.onlineResume}
-                </a>
-              </div>
-            </li>
-            <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
-              <Globe size={18} className="theme-muted" />
               <div>
                 <strong className="block">{personalInfoLabels.english}</strong>
                 <span className="theme-muted">{personalInfoLabels.englishLevel}</span>
@@ -157,14 +165,16 @@ export function Info({
             </li>
           </ul>
 
-          <a
-            href="/curriculo.pdf"
-            download
-            className="theme-surface-strong theme-surface-hover mt-6 inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 font-semibold transition"
-          >
-            <Download size={18} />
-            {personalInfoLabels.downloadCV}
-          </a>
+          <div className="theme-surface mt-6 rounded-[1.6rem] border p-3 md:hidden">
+            <a
+              href="/curriculo.pdf"
+              download
+              className="theme-surface-strong theme-surface-hover inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-4 py-3 font-semibold transition"
+            >
+              <Download size={18} />
+              {personalInfoLabels.downloadCV}
+            </a>
+          </div>
         </div>
       </motion.aside>
     </>

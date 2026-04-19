@@ -65,7 +65,7 @@ export function Header() {
           Resume
         </p>
         <h1 className="text-2xl font-black tracking-tight">Allan da Silva Pereira</h1>
-        <p className="theme-muted text-xs uppercase tracking-[0.24em]">IT • Infraestrutura • Web</p>
+        <p className="theme-muted text-xs uppercase tracking-[0.24em]">IT • Infraestrutura • Dev</p>
       </div>
 
       <div className="mt-3 flex flex-wrap items-center justify-center gap-3 md:mt-0 md:justify-end">

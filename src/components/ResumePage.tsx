@@ -85,8 +85,8 @@ export function ResumePage({ lang }: ResumePageProps) {
         name: "LanFuture",
         url: "https://lanfuture.dev",
         description: isPT
-          ? "Projeto pessoal voltado a produtos digitais, presença web e evolução de soluções próprias."
-          : "Personal project focused on digital products, web presence, and the evolution of proprietary solutions.",
+          ? "Projeto pessoal voltado a produtos digitais, presença dev e evolução de soluções próprias."
+          : "Personal project focused on digital products, development presence, and the evolution of proprietary solutions.",
       },
     ],
     theory: {
@@ -227,12 +227,12 @@ export function ResumePage({ lang }: ResumePageProps) {
     stats: isPT
       ? [
           { label: "Experiência", value: "4 anos" },
-          { label: "Base principal", value: "Infra + Web" },
+          { label: "Base principal", value: "Infra + Dev" },
           { label: "Modelo de atuação", value: "Operação e projeto" },
         ]
       : [
           { label: "Experience", value: "4 years" },
-          { label: "Core base", value: "Infra + Web" },
+          { label: "Core base", value: "Infra + Dev" },
           { label: "Work style", value: "Operations and projects" },
         ],
   };
