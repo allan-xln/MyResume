@@ -306,12 +306,48 @@ body {
   line-height: 1.45;
 }
 
-.skill-group + .skill-group {
-  margin-top: 8px;
+.column section:has(.skill-group) {
+  min-width: 0;
+}
+
+.column section:has(.skill-group) .section-title + .skill-group {
+  margin-top: 0;
+}
+
+.column section:has(.skill-group) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.column section:has(.skill-group) .section-title {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
 }
 
 .skill-group h4 {
   margin-bottom: 6px;
+}
+
+.skill-group-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-group-title-icon::before {
+  content: "◌";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 10px;
+  line-height: 1;
+  flex: 0 0 16px;
 }
 
 .skill-list,

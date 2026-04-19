@@ -9,9 +9,9 @@ import {
   ChartNoAxesCombined,
   GraduationCap,
   Languages,
+  Lightbulb,
   MonitorCog,
   Network,
-  Sparkles,
   ShieldCheck,
 } from "lucide-react";
 
@@ -59,7 +59,6 @@ export function ResumePage({ lang }: ResumePageProps) {
     experienceTitle: isPT ? "Experiências Profissionais" : "Professional Experience",
     skillsTitle: isPT ? "Habilidades Técnicas" : "Technical Skills",
     strengthsTitle: isPT ? "Pontos de força" : "Core strengths",
-    impactTitle: isPT ? "Resumo de impacto" : "Impact snapshot",
     closing: isPT
       ? "Atualmente, busco novos desafios onde eu possa crescer, contribuir e continuar evoluindo com impacto real no negócio."
       : "I am currently seeking new challenges where I can grow, contribute, and keep evolving with real business impact.",
@@ -180,7 +179,7 @@ export function ResumePage({ lang }: ResumePageProps) {
       },
       {
         title: isPT ? "Visão complementar" : "Complementary skills",
-        icon: Sparkles,
+        icon: Lightbulb,
         items: [
           isPT ? "Power BI e pacote Office" : "Power BI and Office suite",
           isPT ? "Design visual e UX/UI" : "Visual design and UX/UI",
@@ -374,17 +373,6 @@ export function ResumePage({ lang }: ResumePageProps) {
                   ))}
                 </div>
               </div>
-
-              <div className="theme-accent-bg rounded-[1.6rem] border p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em]">
-                  {content.impactTitle}
-                </p>
-                <p className="mt-3 text-sm leading-7">
-                  {isPT
-                    ? "Experiência combinando infraestrutura, suporte, automação e web para organizar ambientes, reduzir atritos operacionais e acelerar entrega."
-                    : "Experience blending infrastructure, support, automation, and web work to organize environments, reduce operational friction, and accelerate delivery."}
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -479,12 +467,18 @@ export function ResumePage({ lang }: ResumePageProps) {
                 transition={{ duration: 0.25 }}
                 className="theme-surface theme-spotlight rounded-[1.75rem] border p-6 shadow-sm"
               >
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="theme-chip rounded-2xl p-3">
-                    <Icon className="size-5" />
+                {Icon ? (
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="theme-chip rounded-2xl p-3">
+                      <Icon className="size-5" />
+                    </div>
+                    <h3 className="text-lg font-semibold">{section.title}</h3>
                   </div>
-                  <h3 className="text-lg font-semibold">{section.title}</h3>
-                </div>
+                ) : (
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold">{section.title}</h3>
+                  </div>
+                )}
                 <ul className="space-y-2">
                   {section.items.map((item) => (
                     <li key={item} className="theme-secondary leading-7">

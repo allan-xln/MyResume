@@ -69,10 +69,14 @@ def render_experiences(experiences: list[dict[str, str]]) -> str:
 def render_skill_groups(groups: list[dict[str, object]]) -> str:
     html_parts: list[str] = []
     for group in groups:
+        title = str(group["title"])
+        title_class = "skill-group-title"
+        if title.casefold() == "visao complementar".casefold():
+            title_class += " skill-group-title-icon"
         html_parts.append(
             f"""
             <section class="skill-group">
-              <h4>{escape(str(group["title"]))}</h4>
+              <h4 class="{title_class}">{escape(title)}</h4>
               <ul class="skill-list">
                 {render_list_items(list(group["items"]), "skill-list")}
               </ul>
