@@ -1,0 +1,113 @@
+{
+  "personal": {
+    "full_name": "Allan da Silva Pereira",
+    "role": "Analista de TI | Infraestrutura | Automacao | Desenvolvimento",
+    "birth_date_label": "23/01/2004",
+    "birth_date": {
+      "year": 2004,
+      "month": 1,
+      "day": 23
+    },
+    "location": "Sao Jose dos Pinhais - PR",
+    "phone": "41 98447-6869",
+    "email": "allansilvapereirae@gmail.com",
+    "github": "github.com/allan-xln",
+    "website": "lanfuture.dev",
+    "online_resume": "meetallan.com"
+  },
+  "pt": {
+    "kicker": "Curriculo profissional",
+    "eyebrow": "Infraestrutura, automacao e entrega com visao de operacao",
+    "hero_summary": "Profissional de TI com atuacao pratica em infraestrutura, automacoes, desenvolvimento e operacao.",
+    "header_line": "Infraestrutura, suporte, automacao e desenvolvimento conectados a operacao real.",
+    "stats": [
+      "4 anos de experiencia",
+      "Infra + suporte + dev",
+      "Projetos e operacao"
+    ],
+    "strengths_title": "Pontos de forca",
+    "strengths": [
+      {
+        "title": "Visao pratica",
+        "description": "Atuacao proxima da operacao, com foco em resolver contexto real e nao so demanda isolada."
+      },
+      {
+        "title": "Capacidade de execucao",
+        "description": "Conecta infraestrutura, suporte e desenvolvimento para entregar solucoes completas com agilidade."
+      }
+    ],
+    "profile_title": "Perfil profissional",
+    "paragraphs": [
+      "Atuo ha 4 anos na area de Tecnologia da Informacao, com experiencia voltada para infraestrutura, automacoes, desenvolvimento e implementacao de solucoes corporativas.",
+      "Sou movido por desafios e motivado a transformar problemas do dia a dia em solucoes praticas e eficientes, com foco em otimizar processos e agregar valor as operacoes.",
+      "Na Cotrasa - Scania, de 2021 a 2024, evolui de jovem aprendiz a analista de TI, apoiando estruturacao de processos, melhorias internas, implantacao do Senior e automacoes para dashboards.",
+      "Na PCNet, atuei na Jadimo Transportes ate abril de 2026 e hoje sigo na ERS Transportes, conduzindo infraestrutura, suporte, seguranca da informacao e solucoes sob medida."
+    ],
+    "experience_title": "Experiencia profissional",
+    "experiences": [
+      {
+        "role": "Analista de TI",
+        "company": "PCNet | ERS Transportes",
+        "period": "Abr 2026 - Atual",
+        "highlight": "Atuacao atual com infraestrutura, suporte, organizacao operacional e evolucao do ambiente de TI."
+      },
+      {
+        "role": "Analista de TI",
+        "company": "PCNet | Jadimo Transportes",
+        "period": "2024 - Abr 2026",
+        "highlight": "Responsavel por operacao de TI, infraestrutura, suporte tecnico, seguranca da informacao e solucoes sob medida."
+      },
+      {
+        "role": "Analista de TI",
+        "company": "Cotrasa Scania",
+        "period": "2024",
+        "highlight": "Apoio na implantacao do Senior, estruturacao de processos internos e automacoes."
+      }
+    ],
+    "projects_title": "Projetos e entregas",
+    "projects": [
+      "Implantacao e organizacao de ambientes de TI, com racks, RouterBoard, cabeamento e documentacao.",
+      "Automacoes para busca, consolidacao de dados e alimentacao de dashboards.",
+      "LanFuture voltado a produtos digitais, presenca web e evolucao de solucoes proprias."
+    ],
+    "skills_title": "Competencias tecnicas",
+    "skills": [
+      {
+        "title": "Infraestrutura",
+        "items": [
+          "RouterBoard e MikroTik",
+          "pfSense e OPNsense",
+          "Racks, switches e patch panels",
+          "Zabbix, Grafana e GLPI"
+        ]
+      },
+      {
+        "title": "Desenvolvimento",
+        "items": [
+          "JavaScript, TypeScript",
+          "React, Next.js e Vite",
+          "React Native e Kotlin",
+          "Python, Selenium e PyAutoGUI",
+          "Tailwind CSS, APIs REST e automacao"
+        ]
+      }
+    ],
+    "education_title": "Formacao e base tecnica",
+    "education": [
+      {
+        "title": "Tecnico em Desenvolvimento de Sistemas",
+        "description": ""
+      },
+      {
+        "title": "Engenharia de Software",
+        "description": "Graduacao em andamento"
+      },
+      {
+        "title": "Idiomas",
+        "description": "Ingles intermediario"
+      }
+    ],
+    "closing_title": "Objetivo",
+    "closing": "Busco novos desafios em TI para contribuir com organizacao, infraestrutura e automacoes com impacto real no negocio."
+  }
+}

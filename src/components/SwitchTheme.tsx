@@ -8,7 +8,10 @@ export function SwitchTheme() {
 
   useEffect(() => {
     const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const preferred = stored || 'light';
+    const preferred =
+      stored ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
     setTheme(preferred);
     document.documentElement.setAttribute('data-theme', preferred);
   }, []);
@@ -23,13 +26,14 @@ export function SwitchTheme() {
   return (
     <button
       onClick={toggleTheme}
-      className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 dark:bg-zinc-700 hover:scale-110 transition-all"
+      className="theme-surface theme-surface-hover flex h-10 w-10 items-center justify-center rounded-full border transition-all hover:scale-105"
       title="Trocar tema"
+      aria-label="Trocar tema"
     >
       {theme === 'light' ? (
-        <Sun size={20} className="text-yellow-500" />
+        <Sun size={20} className="theme-accent" />
       ) : (
-        <Moon size={20} className="text-blue-300" />
+        <Moon size={20} className="theme-accent" />
       )}
     </button>
   );

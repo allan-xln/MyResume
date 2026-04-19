@@ -12,11 +12,11 @@ export function ClientLayout({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="relative flex min-h-screen bg-transparent">
       <Info isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div className="flex flex-col flex-1 min-h-screen">
-        <Header /> {/* ✅ lang removido */}
-        <main className="flex-1 p-4">{children}</main>
+      <div className="flex min-h-screen flex-1 flex-col md:pl-4">
+        <Header />
+        <main className="flex-1">{children}</main>
       </div>
     </div>
   );

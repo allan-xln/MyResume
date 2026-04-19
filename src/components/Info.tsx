@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Mail, Github, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Menu, X, Mail, Github, Globe, Download, MapPin, Phone } from 'lucide-react';
+import { PERSONAL_INFO, getAgeLabel } from '@/lib/resume-data';
 
 export function Info({
   isOpen,
@@ -14,6 +16,7 @@ export function Info({
   const pathname = usePathname();
   const lang = pathname.startsWith('/en') ? 'en' : 'pt';
   const isEnglish = lang === 'en';
+  const ageLabel = getAgeLabel(lang);
 
   const personalInfoLabels = {
     title: isEnglish ? 'Personal Info' : 'Informações Pessoais',
@@ -23,6 +26,7 @@ export function Info({
     contact: isEnglish ? 'Contact' : 'Contato',
     email: 'Email',
     github: 'GitHub',
+    onlineResume: isEnglish ? 'Online Resume' : 'Currículo online',
     english: 'English',
     englishLevel: isEnglish
       ? 'Intermediate (in progress)'
@@ -32,18 +36,16 @@ export function Info({
 
   return (
     <>
-      {/* Botão hamburguer para mobile, só aparece quando sidebar fechado */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed top-4 left-4 z-50 md:hidden bg-zinc-800 p-2 rounded text-white shadow-md"
+          className="theme-surface fixed left-4 top-4 z-50 rounded-2xl border p-2.5 shadow-sm md:hidden"
           aria-label={isEnglish ? 'Open menu' : 'Abrir menu'}
         >
           <Menu size={24} />
         </button>
       )}
 
-      {/* Overlay semi-transparente atrás do sidebar no mobile */}
       {isOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/50 md:hidden"
@@ -52,86 +54,119 @@ export function Info({
         />
       )}
 
-      {/* Sidebar */}
-      <aside
+      <motion.aside
+        initial={{ opacity: 0, x: -24 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, ease: 'easeOut' }}
         className={`
-          fixed top-0 left-0 h-screen w-72 bg-zinc-900 p-6 text-sm md:text-base text-zinc-100
-          z-50 flex flex-col transition-transform duration-300 ease-in-out
+          fixed top-0 left-0 z-50 flex h-screen w-80 flex-col p-4 text-sm transition-transform duration-300 ease-in-out md:sticky md:top-0 md:h-screen md:text-base
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-          md:translate-x-0 md:sticky md:transform-none
+          md:translate-x-0 md:transform-none
         `}
         role="complementary"
         aria-label={personalInfoLabels.title}
       >
-        {/* Botão fechar sidebar (mobile) */}
-        <div className="flex justify-end md:hidden">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="text-zinc-400 hover:text-white mb-4"
-            aria-label={isEnglish ? 'Close menu' : 'Fechar menu'}
+        <div className="theme-surface theme-spotlight flex h-full flex-col overflow-hidden rounded-[2rem] border px-6 py-6 shadow-sm">
+          <div className="flex justify-end md:hidden">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="theme-muted mb-4 hover:opacity-100"
+              aria-label={isEnglish ? 'Close menu' : 'Fechar menu'}
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          <div className="mb-8">
+            <p className="theme-muted text-xs font-semibold uppercase tracking-[0.26em]">
+              {personalInfoLabels.title}
+            </p>
+            <h2 className="mt-3 text-2xl font-black tracking-tight">{PERSONAL_INFO.shortName}</h2>
+            <p className="theme-accent mt-1 text-xs font-semibold uppercase tracking-[0.22em]">
+              IT • Infra • Web
+            </p>
+            <p className="theme-muted mt-3 text-sm leading-6">
+              {isEnglish
+                ? 'Hands-on IT professional focused on infrastructure, automation, and delivery.'
+                : 'Profissional de TI com foco prático em infraestrutura, automação e entrega.'}
+            </p>
+          </div>
+
+          <ul className="flex-1 space-y-3">
+            <li className="theme-surface-soft rounded-2xl border p-4">
+              <strong>{personalInfoLabels.age}:</strong> {ageLabel}
+            </li>
+            <li className="theme-surface-soft rounded-2xl border p-4">
+              <strong>{personalInfoLabels.birth}:</strong> {PERSONAL_INFO.birthDateLabel}
+            </li>
+            <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
+              <MapPin size={18} className="theme-muted" />
+              <div>
+                <strong className="block">{personalInfoLabels.location}</strong>
+                <span className="theme-muted">{PERSONAL_INFO.location.replace(' - PR', '')}</span>
+              </div>
+            </li>
+            <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
+              <Phone size={18} className="theme-muted" />
+              <div>
+                <strong className="block">{personalInfoLabels.contact}</strong>
+                <span className="theme-muted">{PERSONAL_INFO.phone}</span>
+              </div>
+            </li>
+            <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
+              <Mail size={18} className="theme-muted" />
+              <div className="min-w-0">
+                <strong className="block">{personalInfoLabels.email}</strong>
+                <span className="theme-muted break-all">{PERSONAL_INFO.email}</span>
+              </div>
+            </li>
+            <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
+              <Github size={18} className="theme-muted" />
+              <div className="min-w-0">
+                <strong className="block">{personalInfoLabels.github}</strong>
+                <a
+                  href="https://github.com/allan-xln"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="theme-muted break-all transition hover:opacity-100"
+                >
+                  {PERSONAL_INFO.github}
+                </a>
+              </div>
+            </li>
+            <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
+              <Globe size={18} className="theme-muted" />
+              <div className="min-w-0">
+                <strong className="block">{personalInfoLabels.onlineResume}</strong>
+                <a
+                  href="https://meetallan.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="theme-muted break-all transition hover:opacity-100"
+                >
+                  {PERSONAL_INFO.onlineResume}
+                </a>
+              </div>
+            </li>
+            <li className="theme-surface-soft flex items-center gap-3 rounded-2xl border p-4">
+              <Globe size={18} className="theme-muted" />
+              <div>
+                <strong className="block">{personalInfoLabels.english}</strong>
+                <span className="theme-muted">{personalInfoLabels.englishLevel}</span>
+              </div>
+            </li>
+          </ul>
+
+          <a
+            href="/curriculo.pdf"
+            download
+            className="theme-surface-strong theme-surface-hover mt-6 inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 font-semibold transition"
           >
-            <X size={24} />
-          </button>
+            <Download size={18} />
+            {personalInfoLabels.downloadCV}
+          </a>
         </div>
-
-        <h2 className="text-xl font-semibold mb-6 border-b border-zinc-700 pb-2">
-          {personalInfoLabels.title}
-        </h2>
-
-        <ul className="space-y-3 flex-1">
-          <li>
-            <strong>{personalInfoLabels.age}:</strong> 21
-          </li>
-          <li>
-            <strong>{personalInfoLabels.birth}:</strong> 23/01/2004
-          </li>
-          <li>
-            <strong>{personalInfoLabels.location}:</strong> São José dos Pinhais
-          </li>
-          <li>
-            <strong>{personalInfoLabels.contact}:</strong>{' '}
-            <span className="text-zinc-400">41 98447-6869</span>
-          </li>
-
-          <li className="flex flex-wrap items-center gap-x-1.5">
-            <Mail size={16} className="text-zinc-400" />
-            <strong className="min-w-[60px]">{personalInfoLabels.email}:</strong>
-            <span className="text-zinc-400 break-all overflow-hidden">
-              allansilvapereirae@gmail.com
-            </span>
-          </li>
-
-          <li className="flex flex-wrap items-center gap-x-1.5">
-            <Github size={16} className="text-zinc-400" />
-            <strong className="min-w-[60px]">{personalInfoLabels.github}:</strong>
-            <a
-              href="https://github.com/allan-xln"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:underline break-all"
-            >
-              github.com/allan-xln
-            </a>
-          </li>
-
-          <li className="flex flex-wrap items-center gap-x-1.5">
-            <Globe size={16} className="text-zinc-400" />
-            <strong className="min-w-[60px]">{personalInfoLabels.english}:</strong>
-            <span className="text-zinc-400">{personalInfoLabels.englishLevel}</span>
-          </li>
-
-          {/* Botão de download do currículo */}
-          <li>
-            <a
-              href="/curriculo.pdf"
-              download
-              className="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-            >
-              {personalInfoLabels.downloadCV}
-            </a>
-          </li>
-        </ul>
-      </aside>
+      </motion.aside>
     </>
   );
 }
