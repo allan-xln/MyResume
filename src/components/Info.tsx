@@ -3,7 +3,7 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu, X, Mail, Github, Globe, Download, MapPin, Phone } from 'lucide-react';
+import { ChevronDown, Menu, X, Mail, Github, Globe, Download, MapPin, Phone } from 'lucide-react';
 import { PERSONAL_INFO, getAgeLabel } from '@/lib/resume-data';
 
 export function Info({
@@ -16,7 +16,41 @@ export function Info({
   const pathname = usePathname();
   const lang = pathname.startsWith('/en') ? 'en' : 'pt';
   const isEnglish = lang === 'en';
-  const ageLabel = getAgeLabel(lang);
+  const [ageLabel, setAgeLabel] = React.useState(lang === 'en' ? '21 years old' : '21 anos');
+  const scrollRef = React.useRef<HTMLDivElement | null>(null);
+  const [hasMoreBelow, setHasMoreBelow] = React.useState(false);
+
+  React.useEffect(() => {
+    setAgeLabel(getAgeLabel(lang));
+  }, [lang]);
+
+  React.useEffect(() => {
+    const element = scrollRef.current;
+
+    if (!element) return;
+
+    const updateScrollState = () => {
+      const canScroll = element.scrollHeight > element.clientHeight + 8;
+      const atBottom =
+        element.scrollTop + element.clientHeight >= element.scrollHeight - 8;
+
+      setHasMoreBelow(canScroll && !atBottom);
+    };
+
+    updateScrollState();
+    element.addEventListener('scroll', updateScrollState, { passive: true });
+
+    const resizeObserver = new ResizeObserver(updateScrollState);
+    resizeObserver.observe(element);
+
+    window.addEventListener('resize', updateScrollState);
+
+    return () => {
+      element.removeEventListener('scroll', updateScrollState);
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateScrollState);
+    };
+  }, [isOpen, lang]);
 
   const personalInfoLabels = {
     title: isEnglish ? 'Personal Info' : 'Informações Pessoais',
@@ -70,14 +104,17 @@ export function Info({
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
         className={`
-          fixed inset-0 z-50 flex h-dvh w-dvw flex-col overflow-y-auto overscroll-contain p-0 text-sm transition-transform duration-300 ease-in-out [-webkit-overflow-scrolling:touch] md:sticky md:top-0 md:h-screen md:w-80 md:p-4 md:text-base
+          fixed inset-0 z-50 flex h-dvh w-dvw flex-col p-0 text-sm transition-transform duration-300 ease-in-out md:sticky md:top-0 md:h-screen md:w-80 md:flex-none md:self-start md:p-4 md:text-base
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           md:translate-x-0 md:transform-none
         `}
         role="complementary"
         aria-label={personalInfoLabels.title}
       >
-        <div className="theme-surface theme-spotlight flex min-h-dvh min-h-0 flex-col overflow-y-auto rounded-none border-0 px-6 py-6 shadow-none md:h-full md:min-h-0 md:rounded-[2rem] md:border md:shadow-sm">
+        <div
+          ref={scrollRef}
+          className="theme-surface theme-spotlight sidebar-scrollbar relative flex h-full min-h-0 flex-col overflow-x-hidden !overflow-y-auto overscroll-contain rounded-none border-0 px-6 py-6 shadow-none touch-pan-y [-webkit-overflow-scrolling:touch] md:rounded-[2rem] md:border md:shadow-sm"
+        >
           <div className="flex justify-end md:hidden">
             <button
               onClick={() => setIsOpen(false)}
@@ -175,6 +212,23 @@ export function Info({
               {personalInfoLabels.downloadCV}
             </a>
           </div>
+
+          {hasMoreBelow && (
+            <button
+              type="button"
+              onClick={() =>
+                scrollRef.current?.scrollBy({
+                  top: 180,
+                  behavior: 'smooth',
+                })
+              }
+              className="theme-surface-strong theme-border-strong sticky bottom-3 left-1/2 z-10 mt-4 inline-flex w-fit -translate-x-1/2 items-center gap-2 self-center rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] shadow-sm"
+              aria-label={isEnglish ? 'Scroll down for more information' : 'Descer para ver mais informações'}
+            >
+              <span>{isEnglish ? 'More' : 'Ver mais'}</span>
+              <ChevronDown size={16} className="animate-bounce" />
+            </button>
+          )}
         </div>
       </motion.aside>
     </>
