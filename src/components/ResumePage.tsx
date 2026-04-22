@@ -64,7 +64,7 @@ export function ResumePage({ lang }: ResumePageProps) {
       : "I am currently seeking new challenges where I can grow, contribute, and keep evolving with real business impact.",
     paragraphs: isPT
       ? [
-          "Atuo há **4 anos na área de Tecnologia da Informação**, com experiência voltada para infraestrutura, automações, desenvolvimento e implementação de soluções corporativas.",
+          "Atuo há **5 anos na área de Tecnologia da Informação**, com experiência voltada para infraestrutura, automações, desenvolvimento e implementação de soluções corporativas.",
           "Sou movido por desafios e motivado a transformar problemas do dia a dia em soluções práticas e eficientes, sempre buscando otimizar processos e agregar valor às operações.",
           "Na **Cotrasa - Scania**, onde estive de **2021 a 2024**, iniciei como jovem aprendiz e, posteriormente, fui promovido ao cargo de analista de TI. Durante esse período, participei da estruturação de processos, conduzi melhorias internas e colaborei diretamente com áreas estratégicas da empresa. Também fui responsável por apoiar a implantação do sistema **Senior**, conduzindo a parte técnica, testes de integração e capacitação dos usuários. Além disso, desenvolvi **projetos de automação** voltados à busca e consolidação de dados para alimentar dashboards, soluções que depois também apliquei em projetos posteriores.",
           "Atuei como **profissional PJ pela PCNet**, com foco no atendimento da **Jadimo Transportes** até **abril de 2026**, sendo responsável pela operação de TI, infraestrutura, suporte técnico, segurança da informação e desenvolvimento de soluções sob medida para a rotina da empresa.",
@@ -72,7 +72,7 @@ export function ResumePage({ lang }: ResumePageProps) {
           "Além das atividades regulares, já atuei em **projetos extraordinários de infraestrutura** para outras empresas, conduzindo a implementação completa de ambientes de TI, desde a montagem e configuração de racks e equipamentos, como RouterBoard, até a passagem de patch cords e entrega final do ambiente, com toda a estrutura documentada e funcional.",
         ]
       : [
-          "I've been working for **4 years in the Information Technology field**, with experience focused on infrastructure, automation, development, and corporate solutions.",
+          "I've been working for **5 years in the Information Technology field**, with experience focused on infrastructure, automation, development, and corporate solutions.",
           "I'm driven by challenges and motivated to turn everyday problems into practical and efficient solutions, always seeking to optimize processes and add value to operations.",
           "At **Cotrasa - Scania**, where I worked from **2021 to 2024**, I started as a young apprentice and was later promoted to IT Analyst. During that time, I helped structure internal processes, implemented improvements, and collaborated with strategic departments. I also supported the implementation of the **Senior** system, handling the technical setup, integration testing, and user training. Additionally, I developed **automation projects** that fetched and consolidated data for dashboards, solutions I later applied to other projects as well.",
           "I worked as a **PJ contractor through PCNet**, focused on supporting **Jadimo Transportes** until **April 2026**, being responsible for IT operations, infrastructure, technical support, information security, and custom solution delivery.",
@@ -226,12 +226,12 @@ export function ResumePage({ lang }: ResumePageProps) {
         ],
     stats: isPT
       ? [
-          { label: "Experiência", value: "4 anos" },
+          { label: "Experiência", value: "5 anos" },
           { label: "Base principal", value: "Infra + Dev" },
           { label: "Modelo de atuação", value: "Operação e projeto" },
         ]
       : [
-          { label: "Experience", value: "4 years" },
+          { label: "Experience", value: "5 years" },
           { label: "Core base", value: "Infra + Dev" },
           { label: "Work style", value: "Operations and projects" },
         ],
