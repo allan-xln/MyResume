@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículo - Allan da Silva Pereira</title>
+
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f9fc;
+      color: #172033;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .resume {
+      width: 210mm;
+      height: 297mm;
+      background: #f7f9fc;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      height: 64mm;
+      background:
+        radial-gradient(circle at 96% 0%, rgba(64, 92, 170, 0.45), transparent 28%),
+        linear-gradient(135deg, #101a2d 0%, #121c31 50%, #1b2d63 100%);
+      color: #ffffff;
+      padding: 9mm 12mm 6mm;
+      flex-shrink: 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 1.6mm 3.4mm;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 7.5px;
+      font-weight: 800;
+      letter-spacing: 2.7px;
+      text-transform: uppercase;
+      margin-bottom: 3.4mm;
+    }
+
+    .name {
+      font-size: 31px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      margin-bottom: 2.2mm;
+    }
+
+    .role {
+      font-size: 9.8px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: 2.7px;
+      text-transform: uppercase;
+      color: #c8d8ff;
+      margin-bottom: 3.1mm;
+      white-space: nowrap;
+    }
+
+    .intro {
+      width: 100%;
+      font-size: 9.5px;
+      line-height: 1.32;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 3.6mm;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6mm 5mm;
+      padding: 3.2mm 4mm;
+      border-radius: 3.2mm;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 8px;
+      line-height: 1.18;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .contact-box strong {
+      color: #77a8ff;
+      font-weight: 900;
+    }
+
+    .content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.18fr 0.88fr;
+      gap: 4.2mm;
+      padding: 5.4mm 12mm 7mm;
+      min-height: 0;
+    }
+
+    .left,
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 3.1mm;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .section-title {
+      font-size: 8.7px;
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3.3px;
+      color: #0f1828;
+      margin-bottom: 2mm;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 12mm;
+      height: 1px;
+      background: #2563eb;
+      margin-top: 1.7mm;
+      border-radius: 999px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #dde5f0;
+      border-radius: 3.2mm;
+      padding: 3mm;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035);
+    }
+
+    .profile-card p {
+      font-size: 8.7px;
+      line-height: 1.34;
+      color: #405069;
+      margin-bottom: 2mm;
+    }
+
+    .profile-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2mm;
+    }
+
+    .experience-card {
+      position: relative;
+      padding: 3mm 3mm 3mm 3.5mm;
+      border-left: 2px solid #2563eb;
+    }
+
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3mm;
+      margin-bottom: 1.5mm;
+    }
+
+    .experience-title {
+      font-size: 9.8px;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 1mm;
+    }
+
+    .experience-date {
+      white-space: nowrap;
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      color: #155dfc;
+      text-transform: uppercase;
+      padding-top: 0.3mm;
+    }
+
+    .company {
+      font-size: 7.6px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      color: #111827;
+      text-transform: uppercase;
+      margin-bottom: 1.2mm;
+    }
+
+    .description {
+      font-size: 8.35px;
+      line-height: 1.3;
+      color: #4a5870;
+    }
+
+    .projects-card ul,
+    .skills-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.65mm;
+    }
+
+    .projects-card li,
+    .skills-card li {
+      position: relative;
+      padding-left: 3.2mm;
+      font-size: 8.3px;
+      line-height: 1.28;
+      color: #405069;
+    }
+
+    .projects-card li::before,
+    .skills-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.35mm;
+      width: 1.2mm;
+      height: 1.2mm;
+      border-radius: 50%;
+      background: #2563eb;
+    }
+
+    .mini-card {
+      padding: 3mm;
+    }
+
+    .mini-card h3 {
+      font-size: 9px;
+      line-height: 1.15;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 1.3mm;
+    }
+
+    .mini-card p {
+      font-size: 8px;
+      line-height: 1.27;
+      color: #405069;
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2mm;
+    }
+
+    .skills-card h3 {
+      font-size: 9px;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 1.8mm;
+    }
+
+    .formation-card {
+      padding: 2.7mm 3mm;
+    }
+
+    .formation-card h3 {
+      font-size: 8.8px;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 0.8mm;
+    }
+
+    .formation-card p {
+      font-size: 8px;
+      color: #405069;
+      line-height: 1.22;
+    }
+
+    .objective-card p {
+      font-size: 8.25px;
+      line-height: 1.3;
+      color: #405069;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="resume">
+    <header class="header">
+      <div class="tag">Currículo Profissional</div>
+
+      <h1 class="name">Allan da Silva Pereira</h1>
+
+      <div class="role">
+        Analista de TI • Desenvolvimento • Automação • Infraestrutura
+      </div>
+
+      <p class="intro">
+        Atuo há 5 anos com tecnologia, com experiência prática em desenvolvimento,
+        automação, suporte e infraestrutura. Tenho perfil de execução, aprendo rápido,
+        me comunico bem, lido com pessoas com facilidade e transformo demandas do
+        dia a dia em soluções úteis, modernas e aplicáveis ao negócio.
+      </p>
+
+      <div class="contact-box">
+        <div><strong>Local</strong> São José dos Pinhais - PR</div>
+        <div><strong>Telefone</strong> 41 98447-6869</div>
+        <div><strong>E-mail</strong> allansilvapereirae@gmail.com</div>
+        <div><strong>GitHub</strong> github.com/allan-xln</div>
+        <div><strong>Site</strong> lanfuture.dev</div>
+        <div><strong>Currículo online</strong> meetallan.com</div>
+        <div><strong>Nascimento</strong> 23/01/2004 - 22 anos</div>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="left">
+        <section>
+          <h2 class="section-title">Perfil Profissional</h2>
+
+          <div class="card profile-card">
+            <p>
+              Atuo há 5 anos na área de Tecnologia da Informação, com experiência em
+              desenvolvimento, automações, suporte técnico, infraestrutura e
+              implementação de soluções corporativas.
+            </p>
+
+            <p>
+              Tenho perfil prático, foco em melhoria contínua e gosto de transformar
+              problemas reais em soluções eficientes, organizadas e com impacto direto
+              na operação.
+            </p>
+
+            <p>
+              Na Cotrasa - Scania, entre 2021 e 2024, evoluí de jovem aprendiz para
+              analista de TI, apoiando a estruturação de processos, a implantação do
+              Senior e a criação de automações e melhorias internas.
+            </p>
+
+            <p>
+              Na PCNet-IT, atuo com suporte técnico, desenvolvimento de soluções sob
+              medida, automações, organização operacional, infraestrutura e melhoria
+              contínua do ambiente de TI, conciliando visão técnica, boa comunicação
+              e atuação próxima das áreas da empresa.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Experiência Profissional</h2>
+
+          <div class="experience-list">
+            <article class="card experience-card">
+              <div class="experience-head">
+                <div>
+                  <h3 class="experience-title">Analista de TI</h3>
+                  <div class="company">PCNet-IT</div>
+                </div>
+
+                <div class="experience-date">2024 - Atual</div>
+              </div>
+
+              <p class="description">
+                Atuação com suporte técnico, desenvolvimento de soluções sob medida,
+                automações, organização de processos, infraestrutura, melhoria contínua
+                do ambiente de TI e apoio próximo à operação.
+              </p>
+            </article>
+
+            <article class="card experience-card">
+              <div class="experience-head">
+                <div>
+                  <h3 class="experience-title">Fundador e Desenvolvedor</h3>
+                  <div class="company">LanFuture</div>
+                </div>
+
+                <div class="experience-date">Projetos pessoais</div>
+              </div>
+
+              <p class="description">
+                Desenvolvimento de projetos pessoais de sites, sistemas, automações
+                e infraestrutura do zero, com foco em soluções próprias, presença
+                digital, tecnologia aplicada e criação de produtos.
+              </p>
+            </article>
+
+            <article class="card experience-card">
+              <div class="experience-head">
+                <div>
+                  <h3 class="experience-title">Analista de TI</h3>
+                  <div class="company">Cotrasa Scania</div>
+                </div>
+
+                <div class="experience-date">2021 - 2024</div>
+              </div>
+
+              <p class="description">
+                Evoluí internamente apoiando implantação de sistemas, estruturação de
+                processos e automações voltadas à rotina administrativa e operacional.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Projetos e Entregas</h2>
+
+          <div class="card projects-card">
+            <ul>
+              <li>
+                Desenvolvimento e evolução de soluções web, automações e ferramentas
+                internas voltadas à rotina operacional.
+              </li>
+              <li>
+                Automações para busca, consolidação de dados e alimentação de
+                dashboards e processos internos.
+              </li>
+              <li>
+                Implantação e organização de ambientes de TI com documentação,
+                estrutura física e apoio técnico completo.
+              </li>
+              <li>
+                Criação de sites, sistemas e ambientes de infraestrutura do zero em
+                projetos pessoais da LanFuture.
+              </li>
+              <li>
+                Construção e evolução da LanFuture com foco em presença digital,
+                tecnologia, automações e soluções próprias.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <aside class="right">
+        <section>
+          <h2 class="section-title">Pontos Fortes</h2>
+
+          <div class="stack">
+            <div class="card mini-card">
+              <h3>Visão prática</h3>
+              <p>
+                Atuo próximo da operação, entendo o contexto real e priorizo o que
+                gera resultado de verdade.
+              </p>
+            </div>
+
+            <div class="card mini-card">
+              <h3>Boa comunicação</h3>
+              <p>
+                Me comunico com clareza, lido bem com pessoas e transito com
+                facilidade entre áreas técnicas e operacionais.
+              </p>
+            </div>
+
+            <div class="card mini-card">
+              <h3>Capacidade de execução</h3>
+              <p>
+                Uno desenvolvimento, automação, suporte e infraestrutura para entregar
+                soluções completas com agilidade.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Competências Técnicas</h2>
+
+          <div class="stack">
+            <div class="card skills-card">
+              <h3>Desenvolvimento e automação</h3>
+              <ul>
+                <li>JavaScript e TypeScript</li>
+                <li>React, Next.js e Vite</li>
+                <li>React Native e Kotlin</li>
+                <li>Python, Selenium e PyAutoGUI</li>
+                <li>Tailwind CSS, APIs REST e automação de processos</li>
+              </ul>
+            </div>
+
+            <div class="card skills-card">
+              <h3>Infraestrutura e suporte</h3>
+              <ul>
+                <li>RouterBoard e MikroTik</li>
+                <li>pfSense e OPNsense</li>
+                <li>Racks, switches e patch panels</li>
+                <li>Zabbix, Grafana e GLPI</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Formação e Base Técnica</h2>
+
+          <div class="stack">
+            <div class="card formation-card">
+              <h3>Técnico em Desenvolvimento de Sistemas</h3>
+            </div>
+
+            <div class="card formation-card">
+              <h3>Engenharia de Software</h3>
+              <p>Graduação em andamento</p>
+            </div>
+
+            <div class="card formation-card">
+              <h3>Idiomas</h3>
+              <p>Inglês avançado</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Objetivo</h2>
+
+          <div class="card objective-card">
+            <p>
+              Busco novos desafios em tecnologia para contribuir com desenvolvimento,
+              automações, organização de processos e soluções com impacto real no
+              negócio.
+            </p>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
