@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import argparse
 import asyncio
 import json
-from datetime import datetime
+import shutil
+import tempfile
 from html import escape
 from pathlib import Path
-from zoneinfo import ZoneInfo
+from typing import Any
 
 from pyppeteer import launch
 
@@ -17,218 +19,272 @@ PUBLIC_DIR = ROOT / "public"
 CONTENT_PATH = EMISSOR_DIR / "content.json"
 TEMPLATE_PATH = EMISSOR_DIR / "template.html"
 STYLE_PATH = EMISSOR_DIR / "style.css"
-OUTPUT_HTML = DIST_DIR / "curriculo.html"
-OUTPUT_PDF = PUBLIC_DIR / "curriculo.pdf"
-TIME_ZONE = "America/Sao_Paulo"
+
+OUTPUTS = {
+    "pt": {
+        "html": DIST_DIR / "curriculo-pt.html",
+        "pdf": PUBLIC_DIR / "curriculo.pdf",
+        "title": "Currículo — Allan Pereira",
+    },
+    "en": {
+        "html": DIST_DIR / "resume-en.html",
+        "pdf": PUBLIC_DIR / "resume.pdf",
+        "title": "Résumé — Allan Pereira",
+    },
+}
 
 
-def get_age(birth_date: dict[str, int]) -> int:
-    now = datetime.now(ZoneInfo(TIME_ZONE))
-    age = now.year - birth_date["year"]
-    if (now.month, now.day) < (birth_date["month"], birth_date["day"]):
-        age -= 1
-    return age
+def anchor(label: str, href: str) -> str:
+    return f'<a href="{escape(href, quote=True)}">{escape(label)}</a>'
 
 
-def render_list_items(items: list[str], class_name: str) -> str:
-    return "".join(f'<li>{escape(item)}</li>' for item in items)
-
-
-def render_profile(paragraphs: list[str]) -> str:
-    return "".join(f'<p class="profile-text">{escape(paragraph)}</p>' for paragraph in paragraphs)
-
-
-def render_strengths(strengths: list[dict[str, str]]) -> str:
+def render_products(products: list[dict[str, str]]) -> str:
     return "".join(
         f"""
-        <article class="strength-card">
-          <h4>{escape(item["title"])}</h4>
-          <p>{escape(item["description"])}</p>
+        <article class="product">
+          <div class="product-heading">
+            <h3>{escape(product["name"])}</h3>
+            <p>{escape(product["category"])}</p>
+          </div>
+          <p class="product-description">{escape(product["description"])}</p>
+          <p class="product-evidence">{escape(product["evidence"])}</p>
         </article>
         """
-        for item in strengths
+        for product in products
     )
 
 
-def render_experiences(experiences: list[dict[str, str]]) -> str:
+def render_experience(experiences: list[dict[str, Any]]) -> str:
     return "".join(
         f"""
-        <article class="timeline-item">
-          <div class="timeline-head">
-            <h4>{escape(item["role"])}</h4>
-            <span class="timeline-period">{escape(item["period"])}</span>
+        <article class="experience-item">
+          <p class="experience-period">{escape(item["period"])}</p>
+          <div class="experience-copy">
+            <div class="experience-heading">
+              <h3>{escape(item["role"])}</h3>
+              <p>{escape(item["company"])}</p>
+            </div>
+            <ul class="experience-contributions">
+              {"".join(f"<li>{escape(contribution)}</li>" for contribution in item["contributions"])}
+            </ul>
           </div>
-          <p class="timeline-company">{escape(item["company"])}</p>
-          <p class="timeline-desc">{escape(item["highlight"])}</p>
         </article>
         """
         for item in experiences
     )
 
 
-def render_skill_groups(groups: list[dict[str, object]]) -> str:
-    html_parts: list[str] = []
-    for group in groups:
-        title = str(group["title"])
-        title_class = "skill-group-title"
-        if title.casefold() == "visao complementar".casefold():
-            title_class += " skill-group-title-icon"
-        html_parts.append(
-            f"""
-            <section class="skill-group">
-              <h4 class="{title_class}">{escape(title)}</h4>
-              <ul class="skill-list">
-                {render_list_items(list(group["items"]), "skill-list")}
-              </ul>
-            </section>
-            """
-        )
-    return "".join(html_parts)
-
-
-def render_education(items: list[dict[str, str]]) -> str:
+def render_capabilities(capabilities: list[dict[str, str]]) -> str:
     return "".join(
         f"""
-        <article class="edu-card">
-          <h4>{escape(item["title"])}</h4>
-          {'<p>' + escape(item["description"]) + '</p>' if item["description"] else ''}
+        <article class="capability">
+          <h3>{escape(item["title"])}</h3>
+          <p>{escape(item["items"])}</p>
         </article>
         """
-        for item in items
+        for item in capabilities
     )
 
 
-def build_html() -> str:
+def render_education(education: list[dict[str, str]]) -> str:
+    return "".join(
+        f"""
+        <article class="education-item">
+          <h3>{escape(item["title"])}</h3>
+          <p>{escape(item["detail"])}</p>
+        </article>
+        """
+        for item in education
+    )
+
+
+def build_html(language: str) -> str:
     DIST_DIR.mkdir(parents=True, exist_ok=True)
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
 
-    content = json.loads(CONTENT_PATH.read_text(encoding="utf-8"))
-    payload = content["pt"]
+    content: dict[str, Any] = json.loads(CONTENT_PATH.read_text(encoding="utf-8"))
     personal = content["personal"]
-    age_label = f'{get_age(personal["birth_date"])} anos'
+    payload = content[language]
+    labels = payload["labels"]
+    location = personal["location_pt"] if language == "pt" else personal["location_en"]
+
+    contact_items = [
+        anchor(personal["email"], f'mailto:{personal["email"]}'),
+        anchor(personal["phone"], f'tel:{personal["phone"].replace(" ", "")}'),
+        anchor(personal["github"], f'https://{personal["github"]}'),
+        anchor(personal["website"], f'https://{personal["website"]}'),
+        f"<span>{escape(location)}</span>",
+    ]
 
     body = f"""
-    <section class="sheet">
-      <header class="hero">
-        <div class="hero-inner">
-          <p class="kicker">{escape(payload["kicker"])}</p>
-          <h1>{escape(personal["full_name"])}</h1>
-          <p class="role">{escape(personal["role"])}</p>
-          <p class="hero-summary">{escape(payload["hero_summary"])}</p>
-          <p class="hero-support">{escape(payload["header_line"])}</p>
-          <section class="hero-stats">
-            {''.join(f'<div class="hero-stat">{escape(item)}</div>' for item in payload["stats"])}
-          </section>
-          <section class="hero-contact">
-            <span>{escape(personal["location"])}</span>
-            <span>{escape(personal["phone"])}</span>
-            <span>{escape(personal["email"])}</span>
-            <span>{escape(personal["github"])}</span>
-            <span>{escape(personal["website"])}</span>
-            <span>Curriculo online: {escape(personal["online_resume"])}</span>
-            <span>{escape(personal["birth_date_label"])} | {escape(age_label)}</span>
-          </section>
+    <article class="resume">
+      <header class="resume-header">
+        <div class="topline">
+          <span class="mark">AP<i></i></span>
+          <span>{escape(payload["document_label"])}</span>
+        </div>
+        <div class="identity">
+          <h1>{escape(personal["display_name"])}</h1>
+          <p>{escape(payload["role"])}</p>
+        </div>
+        <div class="contact-line" aria-label="{escape(labels["contact"])}">
+          {''.join(contact_items)}
         </div>
       </header>
 
-      <section class="body">
-        <div class="column">
-          <section>
-            <h3 class="section-title">{escape(payload["profile_title"])}</h3>
-            {render_profile(payload["paragraphs"])}
+      <div class="resume-body">
+        <div class="main-column">
+          <section class="resume-section profile-section">
+            <h2>{escape(labels["profile"])}</h2>
+            <p class="summary">{escape(payload["summary"])}</p>
           </section>
 
-          <section>
-            <h3 class="section-title">{escape(payload["experience_title"])}</h3>
-            <div class="timeline">
-              {render_experiences(payload["experiences"])}
-            </div>
+          <section class="resume-section experience-section">
+            <h2>{escape(labels["experience"])}</h2>
+            {render_experience(payload["experience"])}
           </section>
 
-          <section>
-            <h3 class="section-title">{escape(payload["projects_title"])}</h3>
-            <div class="project-card">
-              <ul class="project-list">
-                {render_list_items(payload["projects"], "project-list")}
-              </ul>
-            </div>
+          <section class="resume-section products-section">
+            <h2>{escape(labels["products"])}</h2>
+            {render_products(payload["products"])}
           </section>
         </div>
 
-        <div class="column">
-          <section>
-            <h3 class="section-title">{escape(payload["strengths_title"])}</h3>
-            <div class="cards">
-              {render_strengths(payload["strengths"])}
-            </div>
+        <aside class="side-column">
+          <section class="resume-section capabilities-section">
+            <h2>{escape(labels["capabilities"])}</h2>
+            {render_capabilities(payload["capabilities"])}
           </section>
 
-          <section>
-            <h3 class="section-title">{escape(payload["skills_title"])}</h3>
-            {render_skill_groups(payload["skills"])}
+          <section class="resume-section other-work">
+            <h2>{escape(labels["other_work"])}</h2>
+            <p>{escape(payload["other_work"])}</p>
           </section>
 
-          <section>
-            <h3 class="section-title">{escape(payload["education_title"])}</h3>
-            <div class="cards">
-              {render_education(payload["education"])}
-            </div>
+          <section class="resume-section education-section">
+            <h2>{escape(labels["education"])}</h2>
+            {render_education(payload["education"])}
           </section>
+        </aside>
+      </div>
 
-          <section class="closing">
-            <h3 class="section-title">{escape(payload["closing_title"])}</h3>
-            <p>{escape(payload["closing"])}</p>
-          </section>
-        </div>
-      </section>
-    </section>
+      <footer class="resume-footer">
+        <span>meetallan.com</span>
+        <span>Software · AI · Automation · Infrastructure</span>
+      </footer>
+    </article>
     """
 
+    output = OUTPUTS[language]
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     css = STYLE_PATH.read_text(encoding="utf-8")
-    html = template.replace("__INLINE_CSS__", css).replace("__CONTENT__", body)
-    OUTPUT_HTML.write_text(html, encoding="utf-8")
+    html = (
+        template.replace("__LANG__", payload["lang"])
+        .replace("__TITLE__", output["title"])
+        .replace("__INLINE_CSS__", css)
+        .replace("__CONTENT__", body)
+    )
+    output["html"].write_text(html, encoding="utf-8")
     return html
 
 
-async def export_pdf(html: str) -> None:
-    browser = await launch(
-        headless=True,
-        args=[
-            "--no-sandbox",
-            "--disable-setuid-sandbox",
-            "--disable-dev-shm-usage",
-        ],
-    )
+async def export_pdf(language: str, html: str) -> dict[str, float | int]:
+    executable = shutil.which("chromium-browser") or shutil.which("chromium")
+    profile_dir = tempfile.mkdtemp(prefix="pdf-browser-", dir=DIST_DIR)
+    browser = None
+
     try:
+        browser = await launch(
+            executablePath=executable,
+            userDataDir=profile_dir,
+            headless=False,
+            autoClose=False,
+            args=[
+                "--headless=new",
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+            ],
+        )
         page = await browser.newPage()
-        await page.setViewport({"width": 1400, "height": 1980, "deviceScaleFactor": 1})
+        await page.setViewport({"width": 794, "height": 1123, "deviceScaleFactor": 1})
         await page.setContent(html)
-        await asyncio.sleep(0.35)
+        await page.emulateMedia("print")
+        await page.evaluate("() => document.fonts.ready")
+
+        metrics = await page.evaluate(
+            """() => {
+              const root = document.querySelector('.resume');
+              const rootRect = root.getBoundingClientRect();
+              const body = document.querySelector('.resume-body');
+              const bodyRect = body.getBoundingClientRect();
+              const bottoms = [...root.querySelectorAll('*')].map((element) =>
+                element.getBoundingClientRect().bottom
+              );
+              const bodyBottoms = [...body.querySelectorAll('*')].map((element) =>
+                element.getBoundingClientRect().bottom
+              );
+              return {
+                pageHeight: rootRect.height,
+                contentBottom: Math.max(...bottoms) - rootRect.top,
+                bodyHeight: bodyRect.height,
+                bodyContentBottom: Math.max(...bodyBottoms) - bodyRect.top,
+                links: document.querySelectorAll('a[href]').length,
+              };
+            }"""
+        )
+
+        if metrics["contentBottom"] > metrics["pageHeight"] + 1:
+            raise RuntimeError(
+                f'{language}: conteúdo excede a página em '
+                f'{metrics["contentBottom"] - metrics["pageHeight"]:.2f}px'
+            )
+
+        if metrics["bodyContentBottom"] > metrics["bodyHeight"] + 1:
+            raise RuntimeError(
+                f'{language}: conteúdo interno invade o rodapé em '
+                f'{metrics["bodyContentBottom"] - metrics["bodyHeight"]:.2f}px'
+            )
+
         await page.pdf(
             {
-                "path": str(OUTPUT_PDF),
-                "format": "A4",
-                "landscape": False,
+                "path": str(OUTPUTS[language]["pdf"]),
+                "width": "210mm",
+                "height": "297mm",
+                "preferCSSPageSize": True,
                 "printBackground": True,
-                "scale": 0.58,
-                "margin": {
-                    "top": "0",
-                    "right": "0",
-                    "bottom": "0",
-                    "left": "0",
-                },
+                "margin": {"top": "0", "right": "0", "bottom": "0", "left": "0"},
             }
         )
+        return metrics
     finally:
-        await browser.close()
+        if browser is not None:
+            await browser.close()
+        shutil.rmtree(profile_dir, ignore_errors=True)
+
+
+async def generate(language: str) -> None:
+    html = build_html(language)
+    metrics = await export_pdf(language, html)
+    print(
+        f'{language.upper()}: {OUTPUTS[language]["pdf"]} '
+        f'| conteúdo {metrics["contentBottom"]:.1f}/{metrics["pageHeight"]:.1f}px '
+        f'| {metrics["links"]} links'
+    )
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Gera o currículo A4 de Allan Pereira.")
+    parser.add_argument("--lang", choices=("pt", "en", "all"), default="all")
+    return parser.parse_args()
 
 
 def main() -> None:
-    html = build_html()
-    asyncio.run(export_pdf(html))
-    print(f"HTML gerado em: {OUTPUT_HTML}")
-    print(f"PDF gerado em: {OUTPUT_PDF}")
+    args = parse_args()
+    languages = ("pt", "en") if args.lang == "all" else (args.lang,)
+    for language in languages:
+        asyncio.run(generate(language))
 
 
 if __name__ == "__main__":

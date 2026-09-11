@@ -1,39 +1,47 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { PortfolioLanguage } from "@/lib/portfolio-data";
 
-export function SwitchTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+type Theme = "light" | "dark";
+
+export function SwitchTheme({ lang }: { lang: PortfolioLanguage }) {
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const preferred =
-      stored ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-    setTheme(preferred);
-    document.documentElement.setAttribute('data-theme', preferred);
+    const currentTheme = document.documentElement.getAttribute("data-theme") as Theme | null;
+    setTheme(currentTheme === "light" ? "light" : "dark");
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
+  function toggleTheme() {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    window.localStorage.setItem("meetallan-theme", nextTheme);
+    document.documentElement.setAttribute("data-theme", nextTheme);
+  }
+
+  const label =
+    lang === "pt"
+      ? theme === "dark"
+        ? "Usar tema claro"
+        : "Usar tema escuro"
+      : theme === "dark"
+        ? "Use light theme"
+        : "Use dark theme";
 
   return (
     <button
+      className="theme-toggle"
+      type="button"
       onClick={toggleTheme}
-      className="theme-surface theme-surface-hover flex h-10 w-10 items-center justify-center rounded-full border transition-all hover:scale-105"
-      title="Trocar tema"
-      aria-label="Trocar tema"
+      aria-label={label}
+      title={label}
     >
-      {theme === 'light' ? (
-        <Sun size={20} className="theme-accent" />
+      {theme === "dark" ? (
+        <Sun size={16} strokeWidth={1.7} aria-hidden="true" />
       ) : (
-        <Moon size={20} className="theme-accent" />
+        <Moon size={16} strokeWidth={1.7} aria-hidden="true" />
       )}
     </button>
   );

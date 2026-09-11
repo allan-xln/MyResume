@@ -49,60 +49,52 @@ def section_title(text: str) -> str:
 def build_document_xml(content: dict) -> str:
     personal = content["personal"]
     payload = content["pt"]
+    labels = payload["labels"]
 
     blocks: list[str] = []
-    blocks.append(para(personal["full_name"], "NameTitle"))
-    blocks.append(para(personal["role"], "RoleTitle"))
+    blocks.append(para(personal["display_name"], "NameTitle"))
+    blocks.append(para(payload["role"], "RoleTitle"))
     blocks.append(
         para(
             " | ".join(
                 [
-                    personal["location"],
+                    personal["location_pt"],
                     personal["phone"],
                     personal["email"],
                     personal["github"],
                     personal["website"],
-                    f'Curriculo online: {personal["online_resume"]}',
-                    f'Nascimento: {personal["birth_date_label"]}',
                 ]
             ),
             "MetaLine",
         )
     )
 
-    blocks.append(section_title(payload["profile_title"]))
-    for paragraph in payload["paragraphs"]:
-        blocks.append(para(paragraph, "BodyText"))
+    blocks.append(section_title(labels["profile"]))
+    blocks.append(para(payload["summary"], "BodyText"))
 
-    blocks.append(section_title(payload["experience_title"]))
-    for item in payload["experiences"]:
+    blocks.append(section_title(labels["experience"]))
+    for item in payload["experience"]:
         blocks.append(para(f'{item["role"]} | {item["company"]}', "ItemTitle"))
         blocks.append(para(item["period"], "ItemMeta"))
-        blocks.append(para(item["highlight"], "BodyText"))
+        blocks.append(para(" • ".join(item["contributions"]), "BodyText"))
 
-    blocks.append(section_title(payload["projects_title"]))
-    for item in payload["projects"]:
-        blocks.append(bullet(item))
-
-    blocks.append(section_title(payload["strengths_title"]))
-    for item in payload["strengths"]:
-        blocks.append(para(item["title"], "ItemTitle"))
+    blocks.append(section_title(labels["products"]))
+    for item in payload["products"]:
+        blocks.append(para(f'{item["name"]} | {item["category"]}', "ItemTitle"))
         blocks.append(para(item["description"], "BodyText"))
+        blocks.append(para(item["evidence"], "ItemMeta"))
+    blocks.append(para(labels["other_work"], "ItemTitle"))
+    blocks.append(para(payload["other_work"], "BodyText"))
 
-    blocks.append(section_title(payload["skills_title"]))
-    for group in payload["skills"]:
-        blocks.append(para(group["title"], "ItemTitle"))
-        for item in group["items"]:
-            blocks.append(bullet(item))
+    blocks.append(section_title(labels["capabilities"]))
+    for item in payload["capabilities"]:
+        blocks.append(para(item["title"], "ItemTitle"))
+        blocks.append(para(item["items"], "BodyText"))
 
-    blocks.append(section_title(payload["education_title"]))
+    blocks.append(section_title(labels["education"]))
     for item in payload["education"]:
         blocks.append(para(item["title"], "ItemTitle"))
-        if item["description"]:
-            blocks.append(para(item["description"], "BodyText"))
-
-    blocks.append(section_title(payload["closing_title"]))
-    blocks.append(para(payload["closing"], "BodyText"))
+        blocks.append(para(item["detail"], "BodyText"))
 
     return f"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:document

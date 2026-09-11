@@ -1,123 +1,192 @@
 {
   "personal": {
     "full_name": "Allan da Silva Pereira",
-    "role": "Analista de TI | Infraestrutura | Automacao | Desenvolvimento",
-    "birth_date_label": "23/01/2004",
-    "birth_date": {
-      "year": 2004,
-      "month": 1,
-      "day": 23
-    },
-    "location": "Sao Jose dos Pinhais - PR",
-    "phone": "41 98447-6869",
+    "display_name": "Allan Pereira",
+    "location_pt": "São José dos Pinhais, PR",
+    "location_en": "São José dos Pinhais, PR · Brazil",
+    "phone": "+55 41 98447-6869",
     "email": "allansilvapereirae@gmail.com",
     "github": "github.com/allan-xln",
-    "website": "lanfuture.dev",
-    "online_resume": "meetallan.com"
+    "website": "meetallan.com"
   },
   "pt": {
-    "kicker": "Curriculo profissional",
-    "eyebrow": "Infraestrutura, automacao e entrega com visao de operacao",
-    "hero_summary": "Profissional de TI com atuacao pratica em infraestrutura, automacoes, desenvolvimento e operacao.",
-    "header_line": "Infraestrutura, suporte, automacao e desenvolvimento conectados a operacao real.",
-    "stats": [
-      "4 anos de experiencia",
-      "Infra + suporte + dev",
-      "Projetos e operacao"
-    ],
-    "strengths_title": "Pontos de forca",
-    "strengths": [
+    "lang": "pt-BR",
+    "document_label": "Currículo · 2026",
+    "role": "Software Engineer · IA, automação e infraestrutura",
+    "summary": "Desenvolvo software e sistemas com IA para operações reais. Minha experiência em TI corporativa conecta aplicações, dados, redes, servidores e suporte ao ciclo completo de entrega.",
+    "labels": {
+      "profile": "Perfil",
+      "products": "Projetos selecionados",
+      "other_work": "Outros trabalhos",
+      "experience": "Experiência",
+      "capabilities": "Competências",
+      "education": "Formação",
+      "contact": "Contato"
+    },
+    "products": [
       {
-        "title": "Visao pratica",
-        "description": "Atuacao proxima da operacao, com foco em resolver contexto real e nao so demanda isolada."
+        "name": "LanChat",
+        "category": "Atendimento e automação com IA",
+        "description": "Plataforma multi-tenant para WhatsApp com contexto de conversa, áudio, CRM e handoff humano.",
+        "evidence": "Produto, arquitetura, backend, IA e infraestrutura."
       },
       {
-        "title": "Capacidade de execucao",
-        "description": "Conecta infraestrutura, suporte e desenvolvimento para entregar solucoes completas com agilidade."
+        "name": "Camera OCR",
+        "category": "Visão computacional",
+        "description": "Pipeline local para detectar, ler e auditar placas a partir de eventos e imagens de câmera.",
+        "evidence": "Python, FastAPI, FastALPR, PostgreSQL e Linux."
+      },
+      {
+        "name": "Enterprise Automation",
+        "category": "ERP e browser automation",
+        "description": "Ferramentas em torno de KMM/Oracle e sistemas web, com checkpoints e evidências de execução.",
+        "evidence": "Python, Oracle, Selenium Grid, React e Docker."
       }
     ],
-    "profile_title": "Perfil profissional",
-    "paragraphs": [
-      "Atuo ha 4 anos na area de Tecnologia da Informacao, com experiencia voltada para infraestrutura, automacoes, desenvolvimento e implementacao de solucoes corporativas.",
-      "Sou movido por desafios e motivado a transformar problemas do dia a dia em solucoes praticas e eficientes, com foco em otimizar processos e agregar valor as operacoes.",
-      "Na Cotrasa - Scania, de 2021 a 2024, evolui de jovem aprendiz a analista de TI, apoiando estruturacao de processos, melhorias internas, implantacao do Senior e automacoes para dashboards.",
-      "Na PCNet, atuei na Jadimo Transportes ate abril de 2026 e hoje sigo na ERS Transportes, conduzindo infraestrutura, suporte, seguranca da informacao e solucoes sob medida."
-    ],
-    "experience_title": "Experiencia profissional",
-    "experiences": [
+    "other_work": "Vulcan · monitoramento de refrigeração · IA conectada ao ERP · Integra Condomínio · automação de hardware",
+    "experience": [
       {
-        "role": "Analista de TI",
-        "company": "PCNet | ERS Transportes",
-        "period": "Abr 2026 - Atual",
-        "highlight": "Atuacao atual com infraestrutura, suporte, organizacao operacional e evolucao do ambiente de TI."
+        "period": "2024 — atual",
+        "role": "Analista de TI · PJ",
+        "company": "PCNet",
+        "contributions": [
+          "Atendimento a clientes, incluindo alocações dedicadas com responsabilidade direta pela TI.",
+          "Infraestrutura, redes, servidores, segurança, usuários e análise de incidentes.",
+          "Automações, integrações e ferramentas internas em operações como ERS Transportes e Jadimo."
+        ]
       },
       {
-        "role": "Analista de TI",
-        "company": "PCNet | Jadimo Transportes",
-        "period": "2024 - Abr 2026",
-        "highlight": "Responsavel por operacao de TI, infraestrutura, suporte tecnico, seguranca da informacao e solucoes sob medida."
-      },
-      {
-        "role": "Analista de TI",
+        "period": "2021 — 2024",
+        "role": "Aprendiz → Analista de TI",
         "company": "Cotrasa Scania",
-        "period": "2024",
-        "highlight": "Apoio na implantacao do Senior, estruturacao de processos internos e automacoes."
-      }
-    ],
-    "projects_title": "Projetos e entregas",
-    "projects": [
-      "Implantacao e organizacao de ambientes de TI, com racks, RouterBoard, cabeamento e documentacao.",
-      "Automacoes para busca, consolidacao de dados e alimentacao de dashboards.",
-      "LanFuture voltado a produtos digitais, presenca web e evolucao de solucoes proprias."
-    ],
-    "skills_title": "Competencias tecnicas",
-    "skills": [
-      {
-        "title": "Infraestrutura",
-        "items": [
-          "RouterBoard e MikroTik",
-          "pfSense e OPNsense",
-          "Racks, switches e patch panels",
-          "Zabbix, Grafana e GLPI"
-        ]
-      },
-      {
-        "title": "Desenvolvimento",
-        "items": [
-          "JavaScript, TypeScript",
-          "React, Next.js e Vite",
-          "React Native e Kotlin",
-          "Python, Selenium e PyAutoGUI",
-          "Tailwind CSS, APIs REST e automacao"
-        ]
-      },
-      {
-        "title": "Visao complementar",
-        "items": [
-          "Power BI e pacote Office",
-          "Design visual e UX/UI",
-          "Edicao de video e imagem",
-          "Comunicacao e leitura de contexto",
-          "Boa atuacao interpessoal"
+        "contributions": [
+          "Progressão por quatro funções entre aprendizagem e análise.",
+          "Implantação técnica, testes e integrações do ERP Senior.",
+          "Automações, dados operacionais e capacitação de usuários."
         ]
       }
     ],
-    "education_title": "Formacao e base tecnica",
+    "capabilities": [
+      {
+        "title": "AI & Automation",
+        "items": "LLMs, agentes, Whisper, Python, visão computacional, OCR, automação de fluxos"
+      },
+      {
+        "title": "Software",
+        "items": "TypeScript, React, Next.js, Node.js, FastAPI, APIs REST, Kotlin"
+      },
+      {
+        "title": "Infrastructure",
+        "items": "Linux, Windows Server, Active Directory, FortiGate, MikroTik, VPN, Microsoft 365"
+      },
+      {
+        "title": "Data & Systems",
+        "items": "PostgreSQL, Oracle, Prisma, Supabase/RLS, KMM, ERP Senior, integrações"
+      }
+    ],
     "education": [
       {
-        "title": "Tecnico em Desenvolvimento de Sistemas",
-        "description": ""
-      },
-      {
         "title": "Engenharia de Software",
-        "description": "Graduacao em andamento"
+        "detail": "Graduação em andamento"
       },
       {
-        "title": "Idiomas",
-        "description": "Ingles intermediario"
+        "title": "Desenvolvimento de Sistemas",
+        "detail": "Formação técnica"
+      },
+      {
+        "title": "Inglês",
+        "detail": "Intermediário · em desenvolvimento"
+      }
+    ]
+  },
+  "en": {
+    "lang": "en-US",
+    "document_label": "Résumé · 2026",
+    "role": "Software Engineer · AI, automation, and infrastructure",
+    "summary": "I build software and AI systems for real-world operations. My corporate IT background connects applications, data, networks, servers, and support across the full delivery cycle.",
+    "labels": {
+      "profile": "Profile",
+      "products": "Selected projects",
+      "other_work": "Other engineering",
+      "experience": "Experience",
+      "capabilities": "Capabilities",
+      "education": "Education",
+      "contact": "Contact"
+    },
+    "products": [
+      {
+        "name": "LanChat",
+        "category": "AI customer service and automation",
+        "description": "Multi-tenant WhatsApp platform with conversation context, audio, CRM, and human handoff.",
+        "evidence": "Product, architecture, backend, AI, and infrastructure."
+      },
+      {
+        "name": "Camera OCR",
+        "category": "Computer vision",
+        "description": "Local pipeline for detecting, reading, and auditing license plates from camera events and images.",
+        "evidence": "Python, FastAPI, FastALPR, PostgreSQL, and Linux."
+      },
+      {
+        "name": "Enterprise Automation",
+        "category": "ERP and browser automation",
+        "description": "Tooling around KMM/Oracle and browser systems, with checkpoints and execution evidence.",
+        "evidence": "Python, Oracle, Selenium Grid, React, and Docker."
       }
     ],
-    "closing_title": "Objetivo",
-    "closing": "Busco novos desafios em TI para contribuir com organizacao, infraestrutura e automacoes com impacto real no negocio."
+    "other_work": "Vulcan · refrigeration monitoring · AI connected to ERP data · Integra Condomínio · hardware automation",
+    "experience": [
+      {
+        "period": "2024 — Present",
+        "role": "IT Analyst · Contractor",
+        "company": "PCNet",
+        "contributions": [
+          "Support clients, including dedicated assignments with direct responsibility for their IT environments.",
+          "Infrastructure, networks, servers, security, users, and incident analysis.",
+          "Automation, integrations, and internal tools for operations such as ERS Transportes and Jadimo."
+        ]
+      },
+      {
+        "period": "2021 — 2024",
+        "role": "Apprentice → IT Analyst",
+        "company": "Cotrasa Scania",
+        "contributions": [
+          "Progressed through four roles from apprentice to analyst.",
+          "Supported Senior ERP implementation, testing, and integrations.",
+          "Built automations, worked with operational data, and trained users."
+        ]
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "AI & Automation",
+        "items": "LLMs, agents, Whisper, Python, computer vision, OCR, workflow automation"
+      },
+      {
+        "title": "Software",
+        "items": "TypeScript, React, Next.js, Node.js, FastAPI, REST APIs, Kotlin"
+      },
+      {
+        "title": "Infrastructure",
+        "items": "Linux, Windows Server, Active Directory, FortiGate, MikroTik, VPN, Microsoft 365"
+      },
+      {
+        "title": "Data & Systems",
+        "items": "PostgreSQL, Oracle, Prisma, Supabase/RLS, KMM, Senior ERP, integrations"
+      }
+    ],
+    "education": [
+      {
+        "title": "Software Engineering",
+        "detail": "Bachelor's degree in progress"
+      },
+      {
+        "title": "Systems Development",
+        "detail": "Technical diploma"
+      },
+      {
+        "title": "English",
+        "detail": "Intermediate · actively improving"
+      }
+    ]
   }
 }
