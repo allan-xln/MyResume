@@ -4,6 +4,7 @@ export type Project = {
   name: string;
   category: string;
   status: string;
+  href?: string;
   description: string;
   role: string;
   highlights: string[];
@@ -64,6 +65,9 @@ export type PortfolioContent = {
     indexTitle: string;
     indexIntro: string;
     index: EngineeringItem[];
+    ctaTitle: string;
+    ctaText: string;
+    ctaLabel: string;
   };
   experience: {
     eyebrow: string;
@@ -121,16 +125,17 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       location: "São José dos Pinhais, PR · Brasil",
     },
     work: {
-      eyebrow: "Trabalho selecionado",
-      title: "Algumas coisas que construí.",
+      eyebrow: "Construções",
+      title: "Software que saiu da ideia.",
       intro:
-        "Três trabalhos que mostram como atuo entre produto, software e operação.",
+        "Produtos próprios e sistemas feitos para resolver operações reais.",
       role: "Minha atuação",
       projects: [
         {
           name: "LanChat",
-          category: "Produto de IA",
-          status: "Produto próprio",
+          category: "IA aplicada",
+          status: "Produto do ecossistema LanFuture",
+          href: "https://lanfuture.dev/lanchat",
           description:
             "Plataforma multi-tenant de atendimento por WhatsApp. A IA interpreta contexto e intenção dentro de fluxos comerciais, com áudio, CRM e controle humano.",
           role:
@@ -143,40 +148,26 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "OpenAI", "Whisper"],
         },
         {
-          name: "Camera OCR",
-          category: "Computer vision",
-          status: "Sistema interno",
+          name: "LanFuture",
+          category: "Ecossistema de produtos",
+          status: "lanfuture.dev",
+          href: "https://lanfuture.dev",
           description:
-            "Serviço que ingere eventos e imagens de uma câmera Dahua, executa detecção e OCR locais e registra leituras de placas em tempo real.",
+            "Base pública que reúne meus produtos e serviços de software, automação e IA — incluindo LanChat e Vulcan.",
           role:
-            "Coleta, pipeline de OCR, regras de consenso e revisão, API, painel, banco e deployment.",
+            "Concepção, identidade, experiência, desenvolvimento e evolução dos produtos.",
           highlights: [
-            "Processamento local de imagens",
-            "Persistência idempotente e auditável",
-            "Atualização do painel via SSE",
+            "Produtos e projetos próprios",
+            "Software e automação sob medida",
+            "Estratégia, desenvolvimento e operação",
           ],
-          stack: ["Python", "FastAPI", "FastALPR", "PostgreSQL", "SSE", "Linux"],
-        },
-        {
-          name: "Enterprise Automation",
-          category: "ERP e browser automation",
-          status: "Sistemas internos",
-          description:
-            "Ferramentas para compras e transporte em torno de KMM/Oracle e sistemas web, com importação de documentos, checkpoints e evidências de execução.",
-          role:
-            "Arquitetura, integrações, backend, automação e controles de segurança operacional.",
-          highlights: [
-            "Consultas Oracle e reconciliação de dados",
-            "Execução remota com Selenium Grid",
-            "Auditoria, vídeo e checkpoints humanos",
-          ],
-          stack: ["Python", "Oracle", "PostgreSQL", "Selenium Grid", "React", "Docker"],
+          stack: ["React", "Vite", "Motion", "Three.js", "Vercel"],
         },
       ],
-      indexEyebrow: "Engineering index",
-      indexTitle: "Construído ao longo do caminho.",
+      indexEyebrow: "Outras construções",
+      indexTitle: "Um índice do que também ganhou forma.",
       indexIntro:
-        "Produtos, integrações e ferramentas com implementação verificável nos meus repositórios.",
+        "Produtos, integrações, automações e hardware construídos em contextos diferentes.",
       index: [
         {
           name: "Vulcan",
@@ -186,11 +177,11 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Ingestão de eventos, métricas rastreáveis e agentes Windows/Linux em uma plataforma multi-tenant.",
         },
         {
-          name: "Refrigeration Monitor",
-          category: "IA operacional",
-          stack: "Python · FastAPI · Supabase · GPT",
+          name: "Enterprise Automation",
+          category: "ERP e browser automation",
+          stack: "Python · Oracle · Selenium · Docker",
           description:
-            "Telemetria e alarmes convertidos em métricas determinísticas, explicações controladas por IA e notificações.",
+            "Ferramentas em torno de KMM/Oracle e sistemas web, com reconciliação, checkpoints e evidências de execução.",
         },
         {
           name: "WhatsApp + ERP Data",
@@ -198,6 +189,13 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: "TypeScript · WhatsApp · Oracle · PostgreSQL",
           description:
             "Conversas com IA conectadas a dados operacionais autorizados e consultados em tempo real.",
+        },
+        {
+          name: "Refrigeration Monitor",
+          category: "IA operacional",
+          stack: "Python · FastAPI · Supabase · GPT",
+          description:
+            "Telemetria e alarmes convertidos em métricas determinísticas, explicações controladas por IA e notificações.",
         },
         {
           name: "Browser Automation Grid",
@@ -214,6 +212,13 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Aplicativo multi-condomínio com mapa interativo, ocorrências, documentos e acesso por perfil.",
         },
         {
+          name: "Regador automático",
+          category: "Eletrônica e IoT",
+          stack: "ESP32 · C++ · Sensores · MQTT",
+          description:
+            "Protótipo de irrigação automática com ESP32, leitura de sensores e comunicação remota por MQTT.",
+        },
+        {
           name: "Cidade Tranquila",
           category: "Tecnologia cívica",
           stack: "React Native · Maps · Supabase",
@@ -228,13 +233,17 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Automação resiliente entre bafômetro, software legado e impressora térmica, com detecção dinâmica de portas.",
         },
         {
-          name: "First-party Analytics",
-          category: "Dados e SEO",
-          stack: "Node.js · SQLite · Search Console",
+          name: "Camera OCR",
+          category: "Visão computacional",
+          stack: "Python · FastALPR · PostgreSQL · Linux",
           description:
-            "Analytics próprio com métricas por SQL, relatórios programados e integração de leitura com o Search Console.",
+            "Pipeline local para detectar, ler e auditar placas a partir de eventos e imagens de câmera.",
         },
       ],
+      ctaTitle: "Há mais por trás dessas linhas.",
+      ctaText:
+        "Quer entender como algum desses sistemas foi pensado ou ver outras construções? Fale comigo.",
+      ctaLabel: "Descobrir mais no WhatsApp",
     },
     experience: {
       eyebrow: "Experiência profissional",
@@ -311,6 +320,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       title: "Formação e idioma.",
       items: [
         { label: "Graduação", value: "Engenharia de Software · em andamento" },
+        { label: "Curso", value: "Computational Neuroscience · em andamento" },
         { label: "Formação técnica", value: "Técnico em Desenvolvimento de Sistemas" },
         { label: "Idioma", value: "Inglês intermediário · em desenvolvimento" },
       ],
@@ -349,16 +359,17 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       location: "São José dos Pinhais, PR · Brazil",
     },
     work: {
-      eyebrow: "Selected work",
-      title: "A few things I have built.",
+      eyebrow: "Things I have built",
+      title: "Software that made it past the idea stage.",
       intro:
-        "Three projects showing how I work across product, software, and operations.",
+        "Original products and systems built to solve real operational problems.",
       role: "My role",
       projects: [
         {
           name: "LanChat",
-          category: "AI product",
-          status: "Original product",
+          category: "Applied AI",
+          status: "A LanFuture ecosystem product",
+          href: "https://lanfuture.dev/lanchat",
           description:
             "A multi-tenant WhatsApp customer-service platform. AI interprets context and intent inside commercial workflows, with audio, CRM, and human control.",
           role:
@@ -371,40 +382,26 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "OpenAI", "Whisper"],
         },
         {
-          name: "Camera OCR",
-          category: "Computer vision",
-          status: "Internal system",
+          name: "LanFuture",
+          category: "Product ecosystem",
+          status: "lanfuture.dev",
+          href: "https://lanfuture.dev",
           description:
-            "A service that ingests events and images from a Dahua camera, runs local detection and OCR, and records license-plate readings in real time.",
+            "The public home for my software, automation, and AI products and services — including LanChat and Vulcan.",
           role:
-            "Collection, OCR pipeline, consensus and review rules, API, dashboard, database, and deployment.",
+            "Concept, identity, product experience, development, and ongoing evolution.",
           highlights: [
-            "Local image processing",
-            "Idempotent, auditable persistence",
-            "Live dashboard updates over SSE",
+            "Original products and projects",
+            "Custom software and automation",
+            "Strategy, engineering, and operations",
           ],
-          stack: ["Python", "FastAPI", "FastALPR", "PostgreSQL", "SSE", "Linux"],
-        },
-        {
-          name: "Enterprise Automation",
-          category: "ERP and browser automation",
-          status: "Internal systems",
-          description:
-            "Procurement and transportation tooling around KMM/Oracle and browser systems, with document ingestion, checkpoints, and execution evidence.",
-          role:
-            "Architecture, integrations, backend, automation, and operational safety controls.",
-          highlights: [
-            "Oracle queries and data reconciliation",
-            "Remote execution through Selenium Grid",
-            "Audit trails, video, and human checkpoints",
-          ],
-          stack: ["Python", "Oracle", "PostgreSQL", "Selenium Grid", "React", "Docker"],
+          stack: ["React", "Vite", "Motion", "Three.js", "Vercel"],
         },
       ],
-      indexEyebrow: "Engineering index",
-      indexTitle: "Built along the way.",
+      indexEyebrow: "Other builds",
+      indexTitle: "An index of what else took shape.",
       indexIntro:
-        "Products, integrations, and tools backed by working implementations in my repositories.",
+        "Products, integrations, automation, and hardware built across different contexts.",
       index: [
         {
           name: "Vulcan",
@@ -414,11 +411,11 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Event ingestion, traceable metrics, and Windows/Linux agents in a multi-tenant platform.",
         },
         {
-          name: "Refrigeration Monitor",
-          category: "Operational AI",
-          stack: "Python · FastAPI · Supabase · GPT",
+          name: "Enterprise Automation",
+          category: "ERP and browser automation",
+          stack: "Python · Oracle · Selenium · Docker",
           description:
-            "Telemetry and alarms converted into deterministic metrics, controlled AI explanations, and notifications.",
+            "Tooling around KMM/Oracle and browser systems, with reconciliation, checkpoints, and execution evidence.",
         },
         {
           name: "WhatsApp + ERP Data",
@@ -426,6 +423,13 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: "TypeScript · WhatsApp · Oracle · PostgreSQL",
           description:
             "AI conversations connected to authorized operational data queried in real time.",
+        },
+        {
+          name: "Refrigeration Monitor",
+          category: "Operational AI",
+          stack: "Python · FastAPI · Supabase · GPT",
+          description:
+            "Telemetry and alarms converted into deterministic metrics, controlled AI explanations, and notifications.",
         },
         {
           name: "Browser Automation Grid",
@@ -442,6 +446,13 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "A multi-condominium app with interactive maps, incident reports, documents, and role-based access.",
         },
         {
+          name: "Automatic Plant Watering",
+          category: "Electronics and IoT",
+          stack: "ESP32 · C++ · Sensors · MQTT",
+          description:
+            "An ESP32-based automatic irrigation prototype with sensor input and remote MQTT communication.",
+        },
+        {
           name: "Cidade Tranquila",
           category: "Civic technology",
           stack: "React Native · Maps · Supabase",
@@ -456,13 +467,17 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Resilient automation between a breathalyzer, legacy software, and a thermal printer, with dynamic port detection.",
         },
         {
-          name: "First-party Analytics",
-          category: "Data and SEO",
-          stack: "Node.js · SQLite · Search Console",
+          name: "Camera OCR",
+          category: "Computer vision",
+          stack: "Python · FastALPR · PostgreSQL · Linux",
           description:
-            "First-party analytics with SQL-based metrics, scheduled reports, and read-only Search Console integration.",
+            "A local pipeline for detecting, reading, and auditing license plates from camera events and images.",
         },
       ],
+      ctaTitle: "There is more behind these lines.",
+      ctaText:
+        "Want to understand how one of these systems was designed or see other work? Get in touch.",
+      ctaLabel: "Discover more on WhatsApp",
     },
     experience: {
       eyebrow: "Professional experience",
@@ -538,6 +553,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       title: "Education and language.",
       items: [
         { label: "Degree", value: "Software Engineering · in progress" },
+        { label: "Course", value: "Computational Neuroscience · in progress" },
         { label: "Technical education", value: "Systems Development Technician" },
         { label: "Language", value: "Intermediate English · actively improving" },
       ],

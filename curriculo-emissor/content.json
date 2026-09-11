@@ -31,19 +31,20 @@
         "evidence": "Produto, arquitetura, backend, IA e infraestrutura."
       },
       {
-        "name": "Camera OCR",
-        "category": "Visão computacional",
-        "description": "Pipeline local para detectar, ler e auditar placas a partir de eventos e imagens de câmera.",
-        "evidence": "Python, FastAPI, FastALPR, PostgreSQL e Linux."
+        "name": "LanFuture",
+        "category": "Ecossistema de produtos",
+        "url": "https://lanfuture.dev",
+        "description": "Base pública dos meus produtos e serviços de software, automação e IA.",
+        "evidence": "lanfuture.dev · React, Vite, Motion e Vercel."
       },
       {
-        "name": "Enterprise Automation",
-        "category": "ERP e browser automation",
-        "description": "Ferramentas em torno de KMM/Oracle e sistemas web, com checkpoints e evidências de execução.",
-        "evidence": "Python, Oracle, Selenium Grid, React e Docker."
+        "name": "Vulcan",
+        "category": "Inteligência operacional",
+        "description": "Plataforma multi-tenant para eventos, métricas rastreáveis e agentes Windows/Linux.",
+        "evidence": "Next.js, FastAPI, PostgreSQL e Go."
       }
     ],
-    "other_work": "Vulcan · monitoramento de refrigeração · IA conectada ao ERP · Integra Condomínio · automação de hardware",
+    "other_work": "Automação ERP/browser · monitoramento de refrigeração · IA conectada ao ERP · regador automático com ESP32 · Camera OCR",
     "experience": [
       {
         "period": "2024 — atual",
@@ -90,6 +91,10 @@
         "detail": "Graduação em andamento"
       },
       {
+        "title": "Computational Neuroscience",
+        "detail": "Curso em andamento"
+      },
+      {
         "title": "Desenvolvimento de Sistemas",
         "detail": "Formação técnica"
       },
@@ -121,19 +126,20 @@
         "evidence": "Product, architecture, backend, AI, and infrastructure."
       },
       {
-        "name": "Camera OCR",
-        "category": "Computer vision",
-        "description": "Local pipeline for detecting, reading, and auditing license plates from camera events and images.",
-        "evidence": "Python, FastAPI, FastALPR, PostgreSQL, and Linux."
+        "name": "LanFuture",
+        "category": "Product ecosystem",
+        "url": "https://lanfuture.dev",
+        "description": "The public home for my software, automation, and AI products and services.",
+        "evidence": "lanfuture.dev · React, Vite, Motion, and Vercel."
       },
       {
-        "name": "Enterprise Automation",
-        "category": "ERP and browser automation",
-        "description": "Tooling around KMM/Oracle and browser systems, with checkpoints and execution evidence.",
-        "evidence": "Python, Oracle, Selenium Grid, React, and Docker."
+        "name": "Vulcan",
+        "category": "Operational intelligence",
+        "description": "A multi-tenant platform for events, traceable metrics, and Windows/Linux agents.",
+        "evidence": "Next.js, FastAPI, PostgreSQL, and Go."
       }
     ],
-    "other_work": "Vulcan · refrigeration monitoring · AI connected to ERP data · Integra Condomínio · hardware automation",
+    "other_work": "ERP/browser automation · refrigeration monitoring · AI connected to ERP data · ESP32 automatic watering · Camera OCR",
     "experience": [
       {
         "period": "2024 — Present",
@@ -178,6 +184,10 @@
       {
         "title": "Software Engineering",
         "detail": "Bachelor's degree in progress"
+      },
+      {
+        "title": "Computational Neuroscience",
+        "detail": "Course in progress"
       },
       {
         "title": "Systems Development",

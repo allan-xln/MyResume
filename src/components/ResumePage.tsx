@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Download, Github, Mail } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Download, Github, Mail, MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 import {
   getPortfolioContent,
@@ -8,6 +8,7 @@ import {
 
 const EMAIL = "allansilvapereirae@gmail.com";
 const GITHUB_URL = "https://github.com/allan-xln";
+const WHATSAPP_URL = "https://wa.me/5541984476869";
 
 function SectionIntro({
   eyebrow,
@@ -43,7 +44,16 @@ function ProjectItem({
       <span className="project__index">0{index + 1}</span>
       <div className="project__identity">
         <p>{project.category}</p>
-        <h3>{project.name}</h3>
+        <h3>
+          {project.href ? (
+            <a href={project.href} target="_blank" rel="noreferrer">
+              {project.name}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          ) : (
+            project.name
+          )}
+        </h3>
         <span>{project.status}</span>
       </div>
       <div className="project__copy">
@@ -73,6 +83,10 @@ export function ResumePage({ lang }: { lang: PortfolioLanguage }) {
   const content = getPortfolioContent(lang);
   const isPortuguese = lang === "pt";
   const resumePath = isPortuguese ? "/curriculo.pdf" : "/resume.pdf";
+  const whatsappMessage = isPortuguese
+    ? "Olá, Allan! Vi seu portfólio e quero conhecer melhor o seu trabalho."
+    : "Hi Allan! I saw your portfolio and would like to learn more about your work.";
+  const whatsappUrl = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -152,31 +166,43 @@ export function ResumePage({ lang }: { lang: PortfolioLanguage }) {
               />
             ))}
           </div>
-        </section>
-
-        <section className="section section--index" aria-labelledby="engineering-index-title">
-          <Reveal>
-            <div className="section-intro">
-              <p className="eyebrow">{content.work.indexEyebrow}</p>
-              <div>
-                <h2 id="engineering-index-title">{content.work.indexTitle}</h2>
-                <p>{content.work.indexIntro}</p>
+          <div className="work-index" aria-labelledby="engineering-index-title">
+            <Reveal>
+              <div className="work-index__intro">
+                <p className="eyebrow">{content.work.indexEyebrow}</p>
+                <div>
+                  <h2 id="engineering-index-title">{content.work.indexTitle}</h2>
+                  <p>{content.work.indexIntro}</p>
+                </div>
               </div>
+            </Reveal>
+            <div className="engineering-index">
+              {content.work.index.map((item, index) => (
+                <details className="engineering-entry" key={item.name}>
+                  <summary>
+                    <span className="engineering-entry__index">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <strong>{item.name}</strong>
+                    <span>{item.category}</span>
+                    <span>{item.stack}</span>
+                    <i aria-hidden="true">+</i>
+                  </summary>
+                  <p>{item.description}</p>
+                </details>
+              ))}
             </div>
-          </Reveal>
-          <div className="engineering-index">
-            {content.work.index.map((item, index) => (
-              <details className="engineering-entry" key={item.name}>
-                <summary>
-                  <span className="engineering-entry__index">0{index + 1}</span>
-                  <strong>{item.name}</strong>
-                  <span>{item.category}</span>
-                  <span>{item.stack}</span>
-                  <i aria-hidden="true">+</i>
-                </summary>
-                <p>{item.description}</p>
-              </details>
-            ))}
+            <div className="work-cta">
+              <div>
+                <p className="eyebrow">{content.work.ctaTitle}</p>
+                <p>{content.work.ctaText}</p>
+              </div>
+              <a href={whatsappUrl} target="_blank" rel="noreferrer">
+                <MessageCircle size={17} aria-hidden="true" />
+                {content.work.ctaLabel}
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </section>
 

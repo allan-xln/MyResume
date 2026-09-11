@@ -39,19 +39,24 @@ def anchor(label: str, href: str) -> str:
 
 
 def render_products(products: list[dict[str, str]]) -> str:
-    return "".join(
-        f"""
+    rendered: list[str] = []
+    for product in products:
+        name = escape(product["name"])
+        if product.get("url"):
+            name = anchor(product["name"], product["url"])
+        rendered.append(
+            f"""
         <article class="product">
           <div class="product-heading">
-            <h3>{escape(product["name"])}</h3>
+            <h3>{name}</h3>
             <p>{escape(product["category"])}</p>
           </div>
           <p class="product-description">{escape(product["description"])}</p>
           <p class="product-evidence">{escape(product["evidence"])}</p>
         </article>
         """
-        for product in products
-    )
+        )
+    return "".join(rendered)
 
 
 def render_experience(experiences: list[dict[str, Any]]) -> str:
