@@ -25,6 +25,12 @@ export type Experience = {
   contributions: string[];
 };
 
+export type ProjectExperience = {
+  title: string;
+  description: string;
+  examples: string[];
+};
+
 export type Capability = {
   title: string;
   description: string;
@@ -74,6 +80,9 @@ export type PortfolioContent = {
     title: string;
     intro: string;
     items: Experience[];
+    projectsLabel: string;
+    projectsIntro: string;
+    projects: ProjectExperience[];
   };
   capabilities: {
     eyebrow: string;
@@ -114,7 +123,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       resume: "Baixar currículo",
       source: "GitHub",
       email: "Enviar e-mail",
-      switchLanguage: "View in English",
+      switchLanguage: "Ver em inglês",
     },
     hero: {
       eyebrow: "Portfólio pessoal · 2026",
@@ -137,13 +146,13 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           status: "Produto do ecossistema LanFuture",
           href: "https://lanfuture.dev/lanchat",
           description:
-            "Plataforma multi-tenant de atendimento por WhatsApp. A IA interpreta contexto e intenção dentro de fluxos comerciais, com áudio, CRM e controle humano.",
+            "Plataforma de atendimento por WhatsApp para múltiplas empresas. A IA interpreta contexto e intenção dentro de fluxos comerciais, com áudio, CRM e controle humano.",
           role:
-            "Concepção e desenvolvimento ponta a ponta: produto, backend, motor conversacional, interface e operação.",
+            "Concepção e desenvolvimento ponta a ponta: produto, serviços, motor conversacional, interface e operação.",
           highlights: [
             "Contexto e estado de conversa",
             "Transcrição e respostas por voz",
-            "Handoff humano e integrações",
+            "Transferência para atendimento humano e integrações",
           ],
           stack: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "OpenAI", "Whisper"],
         },
@@ -167,21 +176,21 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       indexEyebrow: "Outras construções",
       indexTitle: "Um índice do que também ganhou forma.",
       indexIntro:
-        "Produtos e sistemas que construí entre operações, IA, automação, infraestrutura e hardware.",
+        "Produtos e sistemas que construí entre operações, IA, automação, infraestrutura e dispositivos.",
       index: [
         {
           name: "Vulcan",
           category: "Inteligência operacional",
           stack: "Next.js · FastAPI · PostgreSQL · Go",
           description:
-            "Ingestão de eventos, métricas rastreáveis e agentes Windows/Linux em uma plataforma multi-tenant.",
+            "Ingestão de eventos, métricas rastreáveis e agentes Windows/Linux em uma plataforma para múltiplos clientes.",
         },
         {
           name: "Central de Sistemas",
           category: "Plataforma interna",
           stack: "Python · JavaScript · PostgreSQL · Microsoft 365",
           description:
-            "Hub de sistemas corporativos com autenticação central, permissões por aplicação e uma experiência única de acesso.",
+            "Central de sistemas corporativos com autenticação unificada, permissões por aplicação e uma experiência única de acesso.",
         },
         {
           name: "Portal de Compras",
@@ -206,7 +215,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
         },
         {
           name: "Confirma Fácil",
-          category: "Workflow operacional",
+          category: "Fluxo operacional",
           stack: "Python · Web · Evidências · Automação",
           description:
             "Fluxo controlado para confirmações operacionais, registro de evidências e acompanhamento de cada etapa.",
@@ -219,7 +228,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Acompanhamento de integrações e rotinas operacionais, com alertas e contexto para tratar ocorrências.",
         },
         {
-          name: "SASCar Automation",
+          name: "Automação SASCar",
           category: "Automação de frota",
           stack: "Python · APIs · Automação · Frota",
           description:
@@ -228,7 +237,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
         {
           name: "Autorização de Embarque (AE)",
           category: "Automação de frota",
-          stack: "Python · Browser Automation · Evidências",
+          stack: "Python · Automação em navegador · Evidências",
           description:
             "Geração automatizada de autorizações de embarque com execução centralizada e evidências do processo.",
         },
@@ -244,31 +253,31 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           category: "TI corporativa",
           stack: "Python · PowerShell · AD · Microsoft 365 · GLPI",
           description:
-            "Portal para usuários, inventário, estoque de TI, impressoras, documentação, logs e automações administrativas.",
+            "Portal para usuários, inventário, estoque de TI, impressoras, documentação, registros e automações administrativas.",
         },
         {
-          name: "Enterprise Automation",
-          category: "ERP e browser automation",
+          name: "Automação Empresarial",
+          category: "ERP e automação em navegador",
           stack: "Python · Oracle · Selenium · Docker",
           description:
-            "Ferramentas em torno de KMM/Oracle e sistemas web, com reconciliação, checkpoints e evidências de execução.",
+            "Ferramentas em torno de KMM/Oracle e sistemas web, com reconciliação, pontos de controle e evidências de execução.",
         },
         {
-          name: "WhatsApp + ERP Data",
+          name: "WhatsApp + Dados do ERP",
           category: "Integração de IA",
           stack: "TypeScript · WhatsApp · Oracle · PostgreSQL",
           description:
             "Conversas com IA conectadas a dados operacionais autorizados e consultados em tempo real.",
         },
         {
-          name: "Refrigeration Monitor",
+          name: "Monitoramento de Refrigeração",
           category: "IA operacional",
           stack: "Python · FastAPI · Supabase · GPT",
           description:
             "Telemetria e alarmes convertidos em métricas determinísticas, explicações controladas por IA e notificações.",
         },
         {
-          name: "Selenoid / Browser Automation Grid",
+          name: "Selenoid / Grade de Automação em Navegador",
           category: "Automação",
           stack: "Selenoid · Selenium · Chrome · Docker · VNC",
           description:
@@ -276,10 +285,10 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
         },
         {
           name: "Integra Condomínio",
-          category: "Produto mobile",
+          category: "Produto móvel",
           stack: "Expo · React Native · Supabase",
           description:
-            "Aplicativo multi-condomínio com mapa interativo, ocorrências, documentos e acesso por perfil.",
+            "Aplicativo para múltiplos condomínios com mapa interativo, ocorrências, documentos e acesso por perfil.",
         },
         {
           name: "Regador automático",
@@ -291,14 +300,14 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
         {
           name: "Cidade Tranquila",
           category: "Tecnologia cívica",
-          stack: "React Native · Maps · Supabase",
+          stack: "React Native · Mapas · Supabase",
           description:
             "Aplicativo cartográfico para ocorrências, alertas e fluxos distintos para cidadãos e gestão pública.",
         },
         {
-          name: "Breathalyzer Workflow",
-          category: "Desktop e hardware",
-          stack: "Python · Serial · Windows · PyInstaller",
+          name: "Fluxo com Bafômetro",
+          category: "Aplicação local e dispositivos",
+          stack: "Python · Comunicação serial · Windows · PyInstaller",
           description:
             "Automação resiliente entre bafômetro, software legado e impressora térmica, com detecção dinâmica de portas.",
         },
@@ -335,6 +344,41 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           ],
         },
       ],
+      projectsLabel: "Experiência em projetos",
+      projectsIntro:
+        "Três frentes presentes de forma contínua no que projeto, desenvolvo e opero.",
+      projects: [
+        {
+          title: "Automação",
+          description:
+            "Processos repetitivos transformados em fluxos executáveis, observáveis e recuperáveis.",
+          examples: [
+            "ERP, Oracle e automação de navegador",
+            "Selenoid, filas e execução remota",
+            "Integrações, pontos de controle, evidências e alertas",
+          ],
+        },
+        {
+          title: "Desenvolvimento",
+          description:
+            "Produtos e ferramentas completas, da interface à lógica de negócio e aos dados.",
+          examples: [
+            "Aplicações para web e dispositivos móveis, APIs e serviços",
+            "IA conversacional, OCR e visão computacional",
+            "Sistemas para múltiplos clientes e portais internos",
+          ],
+        },
+        {
+          title: "Infraestrutura",
+          description:
+            "Ambientes que precisam permanecer disponíveis, seguros e simples de manter.",
+          examples: [
+            "Linux, Windows Server, Docker e implantação",
+            "Active Directory, Microsoft 365, redes e VPN",
+            "Monitoramento, cópias de segurança e continuidade operacional",
+          ],
+        },
+      ],
     },
     capabilities: {
       eyebrow: "Competências",
@@ -345,34 +389,34 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       foundationLabel: "Base técnica",
       core: [
         {
-          title: "Software Engineering",
+          title: "Engenharia de Software",
           description: "Aplicações completas, APIs, serviços e interfaces com tipagem e testes.",
           tools: ["TypeScript", "React", "Next.js", "Node.js", "FastAPI", "Kotlin"],
         },
         {
-          title: "AI Systems",
+          title: "Sistemas de IA",
           description: "Contexto, agentes, classificação, extração, voz e controle do modelo.",
-          tools: ["OpenAI", "LLMs", "Whisper", "Python", "Computer vision"],
+          tools: ["OpenAI", "LLMs", "Whisper", "Python", "Visão computacional"],
         },
         {
-          title: "Automation",
+          title: "Automação",
           description: "Integrações e fluxos que conectam dados, sistemas e decisões.",
-          tools: ["REST APIs", "Webhooks", "Selenium", "Queues", "Docker"],
+          tools: ["APIs REST", "Webhooks", "Selenium", "Filas", "Docker"],
         },
       ],
       foundation: [
         {
-          title: "Infrastructure & Networking",
+          title: "Infraestrutura e Redes",
           description: "Redes, identidade, segurança, servidores e diagnóstico ponta a ponta.",
           tools: ["Linux", "Windows Server", "Active Directory", "FortiGate", "MikroTik", "VPN"],
         },
         {
-          title: "Enterprise Systems",
+          title: "Sistemas Empresariais",
           description: "Ambientes corporativos, ERP, Microsoft 365 e suporte avançado.",
           tools: ["KMM", "ERP Senior", "Oracle", "Microsoft 365", "Power BI"],
         },
         {
-          title: "Data & Integration",
+          title: "Dados e Integrações",
           description: "Persistência, isolamento, consultas e integrações operacionais.",
           tools: ["PostgreSQL", "Prisma", "Supabase / RLS", "SQL"],
         },
@@ -383,7 +427,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       title: "Formação e idioma.",
       items: [
         { label: "Graduação", value: "Engenharia de Software · em andamento" },
-        { label: "Curso", value: "Computational Neuroscience · em andamento" },
+        { label: "Curso", value: "Neurociência Computacional · em andamento" },
         { label: "Formação técnica", value: "Técnico em Desenvolvimento de Sistemas" },
         { label: "Idioma", value: "Inglês intermediário · em desenvolvimento" },
       ],
@@ -411,7 +455,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       resume: "Download résumé",
       source: "GitHub",
       email: "Send an email",
-      switchLanguage: "Ver em português",
+      switchLanguage: "View in Portuguese",
     },
     hero: {
       eyebrow: "Personal portfolio · 2026",
@@ -497,12 +541,12 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
         {
           name: "Weighbridge System",
           category: "Road operations",
-          stack: "Python · PostgreSQL · Web · Realtime",
+          stack: "Python · PostgreSQL · Web · Real-time",
           description:
             "Road-weighing software with receipts, operational history, and live indicator tracking.",
         },
         {
-          name: "Confirma Fácil",
+          name: "Confirmation Workflow",
           category: "Operational workflow",
           stack: "Python · Web · Evidence · Automation",
           description:
@@ -572,7 +616,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Centralized runs in isolated Chrome sessions with VNC, video, and per-operation evidence.",
         },
         {
-          name: "Integra Condomínio",
+          name: "Condominium Integration",
           category: "Mobile product",
           stack: "Expo · React Native · Supabase",
           description:
@@ -586,7 +630,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "An ESP32-based automatic irrigation prototype with sensor input and remote MQTT communication.",
         },
         {
-          name: "Cidade Tranquila",
+          name: "Peaceful City",
           category: "Civic technology",
           stack: "React Native · Maps · Supabase",
           description:
@@ -629,6 +673,41 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Progressed through four roles from apprentice to analyst.",
             "Supported Senior ERP implementation, testing, and integrations.",
             "Built automations, worked with operational data, and trained users.",
+          ],
+        },
+      ],
+      projectsLabel: "Project experience",
+      projectsIntro:
+        "Three disciplines that consistently shape what I design, build, and operate.",
+      projects: [
+        {
+          title: "Automation",
+          description:
+            "Repetitive processes turned into executable, observable, and recoverable workflows.",
+          examples: [
+            "ERP, Oracle, and browser automation",
+            "Selenoid, queues, and remote execution",
+            "Integrations, checkpoints, evidence, and alerts",
+          ],
+        },
+        {
+          title: "Software Development",
+          description:
+            "Complete products and tools spanning interfaces, business logic, and data.",
+          examples: [
+            "Web and mobile applications, APIs, and services",
+            "Conversational AI, OCR, and computer vision",
+            "Multi-tenant systems and internal portals",
+          ],
+        },
+        {
+          title: "Infrastructure",
+          description:
+            "Environments designed to remain available, secure, and straightforward to maintain.",
+          examples: [
+            "Linux, Windows Server, Docker, and deployment",
+            "Active Directory, Microsoft 365, networks, and VPN",
+            "Monitoring, backup, and operational continuity",
           ],
         },
       ],

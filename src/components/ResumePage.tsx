@@ -33,10 +33,12 @@ function SectionIntro({
 function ProjectItem({
   project,
   roleLabel,
+  stackLabel,
   index,
 }: {
   project: Project;
   roleLabel: string;
+  stackLabel: string;
   index: number;
 }) {
   return (
@@ -70,7 +72,7 @@ function ProjectItem({
           ))}
         </ul>
       </div>
-      <div className="project__stack" aria-label="Technology stack">
+      <div className="project__stack" aria-label={stackLabel}>
         {project.stack.map((technology) => (
           <span key={technology}>{technology}</span>
         ))}
@@ -162,6 +164,7 @@ export function ResumePage({ lang }: { lang: PortfolioLanguage }) {
                 key={project.name}
                 project={project}
                 roleLabel={content.work.role}
+                stackLabel={isPortuguese ? "Tecnologias utilizadas" : "Technology stack"}
                 index={index}
               />
             ))}
@@ -229,6 +232,25 @@ export function ResumePage({ lang }: { lang: PortfolioLanguage }) {
                 </ul>
               </article>
             ))}
+          </div>
+          <div className="project-experience">
+            <div className="project-experience__intro">
+              <p className="eyebrow">{content.experience.projectsLabel}</p>
+              <p>{content.experience.projectsIntro}</p>
+            </div>
+            <div className="project-experience__grid">
+              {content.experience.projects.map((project) => (
+                <article key={project.title}>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <ul>
+                    {project.examples.map((example) => (
+                      <li key={example}>{example}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 

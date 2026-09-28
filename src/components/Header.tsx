@@ -48,7 +48,11 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="desktop-rail">
-        <Link href={`/${lang}`} className="monogram" aria-label="Allan Pereira — home">
+        <Link
+          href={`/${lang}`}
+          className="monogram"
+          aria-label={lang === "pt" ? "Allan Pereira — início" : "Allan Pereira — home"}
+        >
           AP<span aria-hidden="true" />
         </Link>
 
@@ -69,7 +73,11 @@ export function Header() {
       </div>
 
       <div className="mobile-bar">
-        <Link href={`/${lang}`} className="monogram" aria-label="Allan Pereira — home">
+        <Link
+          href={`/${lang}`}
+          className="monogram"
+          aria-label={lang === "pt" ? "Allan Pereira — início" : "Allan Pereira — home"}
+        >
           AP<span aria-hidden="true" />
         </Link>
         <p>Allan Pereira</p>

@@ -12,7 +12,7 @@
   "pt": {
     "lang": "pt-BR",
     "document_label": "Currículo · 2026",
-    "role": "Software Engineer · IA, automação e infraestrutura",
+    "role": "Engenheiro de Software · IA, automação e infraestrutura",
     "summary": "Desenvolvo software e sistemas com IA para operações reais. Minha experiência em TI corporativa conecta aplicações, dados, redes, servidores e suporte ao ciclo completo de entrega.",
     "labels": {
       "profile": "Perfil",
@@ -27,8 +27,8 @@
       {
         "name": "LanChat",
         "category": "Atendimento e automação com IA",
-        "description": "Plataforma multi-tenant para WhatsApp com contexto de conversa, áudio, CRM e handoff humano.",
-        "evidence": "Produto, arquitetura, backend, IA e infraestrutura."
+        "description": "Plataforma para múltiplas empresas no WhatsApp, com contexto de conversa, áudio, CRM e transferência para atendimento humano.",
+        "evidence": "Produto, arquitetura, serviços, IA e infraestrutura."
       },
       {
         "name": "LanFuture",
@@ -40,11 +40,11 @@
       {
         "name": "Vulcan",
         "category": "Inteligência operacional",
-        "description": "Plataforma multi-tenant para eventos, métricas rastreáveis e agentes Windows/Linux.",
+        "description": "Plataforma para múltiplos clientes com eventos, métricas rastreáveis e agentes Windows/Linux.",
         "evidence": "Next.js, FastAPI, PostgreSQL e Go."
       }
     ],
-    "other_work": "Automação ERP/browser · monitoramento de refrigeração · IA conectada ao ERP · regador automático com ESP32 · Camera OCR",
+    "other_work": "Automação de ERP e navegador · monitoramento de refrigeração · IA conectada ao ERP · regador automático com ESP32 · OCR por câmera",
     "experience": [
       {
         "period": "2024 — atual",
@@ -69,7 +69,7 @@
     ],
     "capabilities": [
       {
-        "title": "AI & Automation",
+        "title": "IA e Automação",
         "items": "LLMs, agentes, Whisper, Python, visão computacional, OCR, automação de fluxos"
       },
       {
@@ -77,11 +77,11 @@
         "items": "TypeScript, React, Next.js, Node.js, FastAPI, APIs REST, Kotlin"
       },
       {
-        "title": "Infrastructure",
+        "title": "Infraestrutura",
         "items": "Linux, Windows Server, Active Directory, FortiGate, MikroTik, VPN, Microsoft 365"
       },
       {
-        "title": "Data & Systems",
+        "title": "Dados e Sistemas",
         "items": "PostgreSQL, Oracle, Prisma, Supabase/RLS, KMM, ERP Senior, integrações"
       }
     ],
@@ -91,7 +91,7 @@
         "detail": "Graduação em andamento"
       },
       {
-        "title": "Computational Neuroscience",
+        "title": "Neurociência Computacional",
         "detail": "Curso em andamento"
       },
       {
