@@ -177,28 +177,28 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Ingestão de eventos, métricas rastreáveis e agentes Windows/Linux em uma plataforma multi-tenant.",
         },
         {
-          name: "Central ERS",
+          name: "Central de Sistemas",
           category: "Plataforma interna",
           stack: "Python · JavaScript · PostgreSQL · Microsoft 365",
           description:
             "Hub de sistemas corporativos com autenticação central, permissões por aplicação e uma experiência única de acesso.",
         },
         {
-          name: "Portal de Compras ERS",
+          name: "Portal de Compras",
           category: "ERP e operação",
           stack: "Python · PostgreSQL · KMM · OCR",
           description:
             "Fluxo de solicitações, orçamentos, fornecedores, pedidos e estoque, com rastreabilidade e integração ao KMM.",
         },
         {
-          name: "ERS Placas",
+          name: "Monitoramento de Placas",
           category: "Visão computacional",
           stack: "Python · LPR · OCR · PostgreSQL",
           description:
             "Consulta e monitoramento de placas com captura de câmeras, segunda leitura por OCR, sincronização de frota e notificações.",
         },
         {
-          name: "Balança ERS",
+          name: "Sistema de Balança",
           category: "Operação rodoviária",
           stack: "Python · PostgreSQL · Web · Tempo real",
           description:
@@ -212,7 +212,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Fluxo controlado para confirmações operacionais, registro de evidências e acompanhamento de cada etapa.",
         },
         {
-          name: "Monitoramento ERS",
+          name: "Monitoramento Operacional",
           category: "Operação e integrações",
           stack: "Python · APIs · Alertas · Observabilidade",
           description:
@@ -233,14 +233,14 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Geração automatizada de autorizações de embarque com execução centralizada e evidências do processo.",
         },
         {
-          name: "IA ERS",
+          name: "Assistente Operacional com IA",
           category: "IA aplicada",
           stack: "IA · Dados operacionais · Relatórios",
           description:
             "Interface em evolução para consultar a operação e apoiar a criação de relatórios a partir de dados autorizados.",
         },
         {
-          name: "Portal TI ERS",
+          name: "Portal de TI",
           category: "TI corporativa",
           stack: "Python · PowerShell · AD · Microsoft 365 · GLPI",
           description:
@@ -321,7 +321,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           contributions: [
             "Atendimento aos clientes da PCNet, incluindo alocações dedicadas com responsabilidade direta pela TI.",
             "Infraestrutura, redes, servidores, segurança, usuários e análise de incidentes.",
-            "Automações, integrações e ferramentas internas para operações como ERS Transportes e Jadimo.",
+            "Automações, integrações e ferramentas internas para operações logísticas e ambientes corporativos.",
           ],
         },
         {
@@ -474,28 +474,28 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Event ingestion, traceable metrics, and Windows/Linux agents in a multi-tenant platform.",
         },
         {
-          name: "Central ERS",
+          name: "Systems Hub",
           category: "Internal platform",
           stack: "Python · JavaScript · PostgreSQL · Microsoft 365",
           description:
             "A corporate systems hub with centralized authentication, per-application permissions, and a unified access experience.",
         },
         {
-          name: "ERS Purchasing Portal",
+          name: "Purchasing Portal",
           category: "ERP and operations",
           stack: "Python · PostgreSQL · KMM · OCR",
           description:
             "Requests, quotations, suppliers, orders, and inventory in a traceable workflow integrated with KMM.",
         },
         {
-          name: "ERS License Plates",
+          name: "License Plate Monitoring",
           category: "Computer vision",
           stack: "Python · LPR · OCR · PostgreSQL",
           description:
             "License-plate lookup and monitoring with camera ingestion, secondary OCR, fleet synchronization, and notifications.",
         },
         {
-          name: "ERS Weighbridge",
+          name: "Weighbridge System",
           category: "Road operations",
           stack: "Python · PostgreSQL · Web · Realtime",
           description:
@@ -509,7 +509,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "A controlled workflow for operational confirmations, evidence capture, and step-by-step tracking.",
         },
         {
-          name: "ERS Monitoring",
+          name: "Operational Monitoring",
           category: "Operations and integrations",
           stack: "Python · APIs · Alerts · Observability",
           description:
@@ -530,14 +530,14 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Automated boarding-authorization generation with centralized execution and process evidence.",
         },
         {
-          name: "ERS AI",
+          name: "AI Operations Assistant",
           category: "Applied AI",
           stack: "AI · Operational data · Reports",
           description:
             "An evolving interface for querying operations and assisting report creation from authorized data.",
         },
         {
-          name: "ERS IT Portal",
+          name: "IT Operations Portal",
           category: "Corporate IT",
           stack: "Python · PowerShell · AD · Microsoft 365 · GLPI",
           description:
@@ -618,7 +618,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           contributions: [
             "Support PCNet clients, including dedicated assignments with direct responsibility for their IT environments.",
             "Infrastructure, networks, servers, security, users, and incident analysis.",
-            "Automation, integrations, and internal tools for operations such as ERS Transportes and Jadimo.",
+            "Automation, integrations, and internal tools for logistics operations and corporate environments.",
           ],
         },
         {
