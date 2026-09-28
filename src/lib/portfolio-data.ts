@@ -167,7 +167,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       indexEyebrow: "Outras construções",
       indexTitle: "Um índice do que também ganhou forma.",
       indexIntro:
-        "Produtos, integrações, automações e hardware construídos em contextos diferentes.",
+        "Produtos e sistemas que construí entre operações, IA, automação, infraestrutura e hardware.",
       index: [
         {
           name: "Vulcan",
@@ -175,6 +175,76 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: "Next.js · FastAPI · PostgreSQL · Go",
           description:
             "Ingestão de eventos, métricas rastreáveis e agentes Windows/Linux em uma plataforma multi-tenant.",
+        },
+        {
+          name: "Central ERS",
+          category: "Plataforma interna",
+          stack: "Python · JavaScript · PostgreSQL · Microsoft 365",
+          description:
+            "Hub de sistemas corporativos com autenticação central, permissões por aplicação e uma experiência única de acesso.",
+        },
+        {
+          name: "Portal de Compras ERS",
+          category: "ERP e operação",
+          stack: "Python · PostgreSQL · KMM · OCR",
+          description:
+            "Fluxo de solicitações, orçamentos, fornecedores, pedidos e estoque, com rastreabilidade e integração ao KMM.",
+        },
+        {
+          name: "ERS Placas",
+          category: "Visão computacional",
+          stack: "Python · LPR · OCR · PostgreSQL",
+          description:
+            "Consulta e monitoramento de placas com captura de câmeras, segunda leitura por OCR, sincronização de frota e notificações.",
+        },
+        {
+          name: "Balança ERS",
+          category: "Operação rodoviária",
+          stack: "Python · PostgreSQL · Web · Tempo real",
+          description:
+            "Sistema de pesagem rodoviária com comprovantes, histórico operacional e acompanhamento de indicadores em tempo real.",
+        },
+        {
+          name: "Confirma Fácil",
+          category: "Workflow operacional",
+          stack: "Python · Web · Evidências · Automação",
+          description:
+            "Fluxo controlado para confirmações operacionais, registro de evidências e acompanhamento de cada etapa.",
+        },
+        {
+          name: "Monitoramento ERS",
+          category: "Operação e integrações",
+          stack: "Python · APIs · Alertas · Observabilidade",
+          description:
+            "Acompanhamento de integrações e rotinas operacionais, com alertas e contexto para tratar ocorrências.",
+        },
+        {
+          name: "SASCar Automation",
+          category: "Automação de frota",
+          stack: "Python · APIs · Automação · Frota",
+          description:
+            "Automação de rotinas e acesso integrado a recursos da SASCar dentro do ambiente operacional.",
+        },
+        {
+          name: "Autorização de Embarque (AE)",
+          category: "Automação de frota",
+          stack: "Python · Browser Automation · Evidências",
+          description:
+            "Geração automatizada de autorizações de embarque com execução centralizada e evidências do processo.",
+        },
+        {
+          name: "IA ERS",
+          category: "IA aplicada",
+          stack: "IA · Dados operacionais · Relatórios",
+          description:
+            "Interface em evolução para consultar a operação e apoiar a criação de relatórios a partir de dados autorizados.",
+        },
+        {
+          name: "Portal TI ERS",
+          category: "TI corporativa",
+          stack: "Python · PowerShell · AD · Microsoft 365 · GLPI",
+          description:
+            "Portal para usuários, inventário, estoque de TI, impressoras, documentação, logs e automações administrativas.",
         },
         {
           name: "Enterprise Automation",
@@ -198,9 +268,9 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Telemetria e alarmes convertidos em métricas determinísticas, explicações controladas por IA e notificações.",
         },
         {
-          name: "Browser Automation Grid",
+          name: "Selenoid / Browser Automation Grid",
           category: "Automação",
-          stack: "Selenium · Python · React · Docker",
+          stack: "Selenoid · Selenium · Chrome · Docker · VNC",
           description:
             "Execuções centralizadas em sessões Chrome isoladas, com VNC, vídeo e evidências por operação.",
         },
@@ -231,13 +301,6 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: "Python · Serial · Windows · PyInstaller",
           description:
             "Automação resiliente entre bafômetro, software legado e impressora térmica, com detecção dinâmica de portas.",
-        },
-        {
-          name: "Camera OCR",
-          category: "Visão computacional",
-          stack: "Python · FastALPR · PostgreSQL · Linux",
-          description:
-            "Pipeline local para detectar, ler e auditar placas a partir de eventos e imagens de câmera.",
         },
       ],
       ctaTitle: "Há mais por trás dessas linhas.",
@@ -401,7 +464,7 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
       indexEyebrow: "Other builds",
       indexTitle: "An index of what else took shape.",
       indexIntro:
-        "Products, integrations, automation, and hardware built across different contexts.",
+        "Products and systems I built across operations, AI, automation, infrastructure, and hardware.",
       index: [
         {
           name: "Vulcan",
@@ -409,6 +472,76 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: "Next.js · FastAPI · PostgreSQL · Go",
           description:
             "Event ingestion, traceable metrics, and Windows/Linux agents in a multi-tenant platform.",
+        },
+        {
+          name: "Central ERS",
+          category: "Internal platform",
+          stack: "Python · JavaScript · PostgreSQL · Microsoft 365",
+          description:
+            "A corporate systems hub with centralized authentication, per-application permissions, and a unified access experience.",
+        },
+        {
+          name: "ERS Purchasing Portal",
+          category: "ERP and operations",
+          stack: "Python · PostgreSQL · KMM · OCR",
+          description:
+            "Requests, quotations, suppliers, orders, and inventory in a traceable workflow integrated with KMM.",
+        },
+        {
+          name: "ERS License Plates",
+          category: "Computer vision",
+          stack: "Python · LPR · OCR · PostgreSQL",
+          description:
+            "License-plate lookup and monitoring with camera ingestion, secondary OCR, fleet synchronization, and notifications.",
+        },
+        {
+          name: "ERS Weighbridge",
+          category: "Road operations",
+          stack: "Python · PostgreSQL · Web · Realtime",
+          description:
+            "Road-weighing software with receipts, operational history, and live indicator tracking.",
+        },
+        {
+          name: "Confirma Fácil",
+          category: "Operational workflow",
+          stack: "Python · Web · Evidence · Automation",
+          description:
+            "A controlled workflow for operational confirmations, evidence capture, and step-by-step tracking.",
+        },
+        {
+          name: "ERS Monitoring",
+          category: "Operations and integrations",
+          stack: "Python · APIs · Alerts · Observability",
+          description:
+            "Monitoring for integrations and operational routines, with alerts and context for handling incidents.",
+        },
+        {
+          name: "SASCar Automation",
+          category: "Fleet automation",
+          stack: "Python · APIs · Automation · Fleet",
+          description:
+            "Automated routines and integrated access to SASCar resources within the operational environment.",
+        },
+        {
+          name: "Boarding Authorization (AE)",
+          category: "Fleet automation",
+          stack: "Python · Browser Automation · Evidence",
+          description:
+            "Automated boarding-authorization generation with centralized execution and process evidence.",
+        },
+        {
+          name: "ERS AI",
+          category: "Applied AI",
+          stack: "AI · Operational data · Reports",
+          description:
+            "An evolving interface for querying operations and assisting report creation from authorized data.",
+        },
+        {
+          name: "ERS IT Portal",
+          category: "Corporate IT",
+          stack: "Python · PowerShell · AD · Microsoft 365 · GLPI",
+          description:
+            "A portal for users, device inventory, IT stock, printers, documentation, logs, and administrative automation.",
         },
         {
           name: "Enterprise Automation",
@@ -432,9 +565,9 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
             "Telemetry and alarms converted into deterministic metrics, controlled AI explanations, and notifications.",
         },
         {
-          name: "Browser Automation Grid",
+          name: "Selenoid / Browser Automation Grid",
           category: "Automation",
-          stack: "Selenium · Python · React · Docker",
+          stack: "Selenoid · Selenium · Chrome · Docker · VNC",
           description:
             "Centralized runs in isolated Chrome sessions with VNC, video, and per-operation evidence.",
         },
@@ -465,13 +598,6 @@ const content: Record<PortfolioLanguage, PortfolioContent> = {
           stack: "Python · Serial · Windows · PyInstaller",
           description:
             "Resilient automation between a breathalyzer, legacy software, and a thermal printer, with dynamic port detection.",
-        },
-        {
-          name: "Camera OCR",
-          category: "Computer vision",
-          stack: "Python · FastALPR · PostgreSQL · Linux",
-          description:
-            "A local pipeline for detecting, reading, and auditing license plates from camera events and images.",
         },
       ],
       ctaTitle: "There is more behind these lines.",
